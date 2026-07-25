@@ -16,12 +16,16 @@ npm run build    # static export → /out (local, no basePath)
 npm run start    # not used for static export; serve /out with any static host
 ```
 
-## Hosting (free)
+## Hosting (free) — LIVE
 
-- **GitHub Pages** (auto): push `master` → Actions deploy  
-  URL: `https://9BaoTran1.github.io/coreprint/`
-- Scale **300–500 users/tháng**: dư sức free tier (static only + Tally form)
-- Local build uses no `basePath`; CI sets `GH_PAGES=true` for project site path
+**Website:** https://9baotran1.github.io/coreprint/
+
+> Đúng URL có `/coreprint/` (không mở `github.com/...` raw repo).
+
+- Auto deploy: mỗi `git push master` → GitHub Actions → Pages  
+- Actions: https://github.com/9BaoTran1/coreprint/actions  
+- Scale **300–500 users/tháng**: free tier đủ (static + form Tally)  
+- Local build: no `basePath`; CI set `GH_PAGES=true` → prefix `/coreprint`
 
 ## Routes
 
