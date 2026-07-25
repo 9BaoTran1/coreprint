@@ -64,26 +64,28 @@ export function buildConsultBrief(
     if (weak.length) {
       priorities.push({
         id: "iq-index-gap",
-        title: "Lệch / yếu index nhận thức (WAIS-aligned)",
+        title: "Cần củng cố nhóm tư duy còn yếu",
         severity: weak[0].percent < 40 ? "high" : "medium",
         evidence: weak.map(
           (d) =>
-            `${d.label}: ${d.percent}%${d.indexScore != null ? ` · index ~${d.indexScore}` : ""}`,
+            `${d.label}: ${d.percent}%${d.indexScore != null ? ` · khoảng ${d.indexScore}` : ""}`,
         ),
         coachQuestions: [
-          "Công việc hiện tại đòi hỏi index nào nhiều nhất (ngôn ngữ / fluid / nhớ thao tác)?",
-          "Khi ra quyết định lớn, bạn thường thiếu dữ liệu, thiếu framework, hay thiếu thời gian suy?",
-          "Có phần việc nào bạn tránh vì ‘nặng đầu’?",
+          "Công việc hiện tại đòi hỏi nhiều nhất nhóm nào: ngôn ngữ, suy luận hay trí nhớ thao tác?",
+          "Khi ra quyết định lớn, bạn thường thiếu dữ liệu, thiếu khung suy nghĩ, hay thiếu thời gian suy?",
+          "Có phần việc nào bạn hay né vì ‘nặng đầu’?",
         ],
         actions90d: [
-          "Chọn 1 index thấp nhất → luyện 3×/tuần × 20’ (dạng tương đương, không học thuộc đề).",
-          "Decision log 1 quyết định/tuần: giả định → lựa chọn → kết quả.",
-          "Gắn skill học (SQL / strategy / writing) với index cần mài.",
+          "Chọn 1 nhóm thấp nhất → luyện 3 lần/tuần × 20 phút (dạng tương đương, không học thuộc đề).",
+          "Mỗi tuần ghi 1 quyết định: giả định → lựa chọn → kết quả.",
+          "Gắn kỹ năng đang học với nhóm tư duy cần mài.",
         ],
       });
     }
     if (iq.band === "below" || iq.band === "low_avg" || iq.percent < 40) {
-      risks.push("Baseline nhận thức trên battery thấp — tránh quyết định nghề lớn chỉ dựa cảm tính; cần lộ trình kỹ năng rõ.");
+      risks.push(
+        "Nền tư duy trên bài đo còn thấp — tránh quyết định nghề lớn chỉ theo cảm tính; cần lộ trình kỹ năng rõ.",
+      );
     }
   }
 
@@ -92,30 +94,32 @@ export function buildConsultBrief(
     dimStrong(eq, 65)
       .slice(0, 2)
       .forEach((d) => {
-        strengths.push(`EQ ability · ${d.label} (${d.percent}%)`);
+        strengths.push(`Cảm xúc · ${d.label} (${d.percent}%)`);
       });
     const weak = dimWeak(eq, 55);
     if (weak.length) {
       const top = weak[0];
       priorities.push({
         id: "eq-branch",
-        title: `Khoảng trống EI — ${top.label}`,
+        title: `Cần phát triển: ${top.label}`,
         severity: top.percent < 45 ? "high" : "medium",
-        evidence: weak.map((d) => `${d.label}: ${d.percent}% · key SJT`),
+        evidence: weak.map((d) => `${d.label}: ${d.percent}%`),
         coachQuestions: [
-          "Kể 1 xung đột 90 ngày gần đây: bạn đã phản ứng thế nào ở phút đầu?",
-          "Ai trong đời sống/công việc sẽ xác nhận điểm mù này nếu hỏi 360° nhẹ?",
+          "Kể một xung đột trong 90 ngày gần đây: bạn phản ứng thế nào ở phút đầu?",
+          "Ai trong công việc sẽ xác nhận điểm mù này nếu được hỏi khéo?",
           "Tình huống nào bạn hay chọn ‘thắng’ thay vì ‘hiểu’?",
         ],
         actions90d: [
-          "1 script/tuần cho nhánh yếu (pause email nóng / active listening / conflict interest).",
-          "Peer feedback 1 lần/tháng: 1 hành vi cần giữ, 1 hành vi cần đổi.",
-          "Role-play 15’ trong buổi tư vấn #2.",
+          "Mỗi tuần 1 kịch bản nhỏ cho nhóm yếu (dừng email nóng / lắng nghe / làm rõ lợi ích chung).",
+          "Mỗi tháng xin 1 lần phản hồi: 1 hành vi nên giữ, 1 hành vi nên đổi.",
+          "Diễn tập 15 phút trong buổi tư vấn lần 2.",
         ],
       });
     }
     if (eq.percent < 50) {
-      risks.push("EQ ability SJT thấp — rủi ro leadership, feedback, đàm phán nếu đang lead hoặc sắp lead.");
+      risks.push(
+        "EQ trên tình huống còn thấp — dễ ảnh hưởng lãnh đạo, phản hồi và đàm phán nếu bạn đang (hoặc sắp) lead.",
+      );
     }
   }
 
@@ -124,7 +128,7 @@ export function buildConsultBrief(
 
     dimStrong(eng, 70).forEach((d) => {
       if (d.mean != null && d.mean >= 4)
-        strengths.push(`Engage · ${d.label} (M=${d.mean})`);
+        strengths.push(`Năng lượng · ${d.label} (TB ${d.mean})`);
     });
 
     const engWeak = [...eng.dimensions].sort(
@@ -134,81 +138,83 @@ export function buildConsultBrief(
     if (eng.band === "very_low" || eng.band === "low" || (lowest && (lowest.mean ?? 0) < 3)) {
       priorities.push({
         id: "engage-low",
-        title: "Gắn kết thấp / cảnh báo sớm (UWES)",
+        title: "Gắn kết / năng lượng thấp — cần chú ý sớm",
         severity:
           eng.band === "very_low" || eng.band === "low" ? "high" : "medium",
         evidence: eng.dimensions.map(
-          (d) => `${d.label}: M=${d.mean ?? "—"} (${d.percent}%)`,
+          (d) => `${d.label}: TB ${d.mean ?? "—"} (${d.percent}%)`,
         ),
         coachQuestions: [
-          "Triệu chứng thể chất/giấc ngủ 4 tuần gần đây thế nào?",
-          "Vấn đề là workload, values misfit, hay quan hệ sếp/team?",
-          "Nếu giữ nguyên 6 tháng nữa, cái gì sẽ vỡ trước?",
+          "Giấc ngủ và sức khỏe thể chất 4 tuần gần đây thế nào?",
+          "Vấn đề chủ yếu là khối lượng việc, lệch giá trị, hay quan hệ sếp/team?",
+          "Nếu giữ nguyên 6 tháng nữa, điều gì có thể hỏng trước?",
         ],
         actions90d: [
-          "Tuần 1–2: recovery non-negotiable (ngủ, biên giới).",
-          "Job crafting 20% theo điểm mạnh nếu Dedication thấp.",
-          "Deep work blocks nếu Absorption thấp; review role fit nếu Vigor+Dedication cùng thấp.",
+          "Tuần 1–2: ưu tiên phục hồi (ngủ, ranh giới công việc).",
+          "Nếu gắn kết thấp: điều chỉnh 20% nhiệm vụ theo điểm mạnh và ý nghĩa.",
+          "Nếu tập trung thấp: chặn khung giờ làm sâu; nếu nhiều trụ thấp cùng lúc — rà lại sự phù hợp vai trò.",
         ],
       });
       risks.push(
-        `UWES band «${eng.bandLabel}» — ưu tiên năng lượng/ý nghĩa trước khi ép hiệu suất hoặc nhảy việc bốc đồng.`,
+        `${eng.bandLabel} — nên ưu tiên năng lượng và ý nghĩa trước khi ép hiệu suất hoặc nhảy việc vội.`,
       );
     } else if (eng.band === "high" || eng.band === "very_high") {
-      strengths.push(`Engage cao (${eng.displayScore}) — bảo vệ khỏi overwork ngụy trang đam mê`);
+      strengths.push(
+        `Gắn kết cao (${eng.displayScore}) — cần giữ ranh giới để tránh làm quá sức dưới danh nghĩa đam mê`,
+      );
       if (lowest && (lowest.mean ?? 6) < 3.5) {
         priorities.push({
           id: "engage-imbalance",
-          title: "Engage tổng ổn nhưng lệch trụ",
+          title: "Tổng gắn kết ổn nhưng lệch giữa các trụ",
           severity: "low",
-          evidence: [`Trụ thấp hơn: ${lowest.label} M=${lowest.mean}`],
-          coachQuestions: ["Trụ thấp có đang bù bằng overwork không?"],
-          actions90d: ["Cân bằng recovery vs deep immersion."],
+          evidence: [`Trụ thấp hơn: ${lowest.label} TB ${lowest.mean}`],
+          coachQuestions: ["Trụ thấp có đang được bù bằng làm thêm giờ không?"],
+          actions90d: ["Cân bằng phục hồi với thời gian làm sâu."],
         });
       }
     }
   }
 
-  // Cross-battery patterns
   if (iq && eq && iq.percent >= 65 && eq.percent < 50) {
     priorities.unshift({
       id: "iq-eq-gap",
-      title: "Tư duy mạnh – EI situational yếu (pattern hay gặp 25+)",
+      title: "Tư duy mạnh – ứng xử cảm xúc còn yếu (hay gặp ở 25+)",
       severity: "high",
       evidence: [
-        `IQ composite band: ${iq.bandLabel}`,
-        `EQ SJT band: ${eq.bandLabel}`,
+        `Tư duy: ${iq.bandLabel}`,
+        `Cảm xúc: ${eq.bandLabel}`,
       ],
       coachQuestions: [
         "Bạn có từng ‘đúng về logic’ nhưng mất đồng thuận team không?",
-        "Phản hồi từ sếp/peer gần đây nói gì về cách giao tiếp?",
+        "Phản hồi gần đây từ sếp/đồng nghiệp nói gì về cách giao tiếp?",
       ],
       actions90d: [
-        "Ưu tiên EQ branch thấp hơn thêm skill kỹ thuật mới.",
-        "Mỗi quyết định quan trọng: 1 vòng ‘ai bị ảnh hưởng + họ cảm thấy gì’.",
+        "Ưu tiên luyện EQ trước khi thêm kỹ năng kỹ thuật mới.",
+        "Mỗi quyết định quan trọng: hỏi ‘ai bị ảnh hưởng và họ có thể cảm thấy gì?’",
       ],
     });
-    risks.push("Rủi ro ‘smart but hard to follow’ — cản leadership dù IQ tốt.");
+    risks.push(
+      "Dễ bị nhìn là ‘giỏi nhưng khó theo’ — cản lãnh đạo dù tư duy tốt.",
+    );
   }
 
   if (eng && eq && (eng.band === "low" || eng.band === "very_low") && eq.percent < 55) {
     priorities.unshift({
       id: "burnout-eq",
-      title: "Disengage + EQ thấp dưới áp lực",
+      title: "Mất gắn kết + EQ thấp khi chịu áp lực",
       severity: "high",
       evidence: [eng.bandLabel, eq.bandLabel],
       coachQuestions: [
-        "Bạn có đang cô lập cảm xúc hoặc ‘tắt’ với đồng nghiệp không?",
-        "Hỗ trợ xã hội hiện tại (bạn/gia đình/mentor) đủ không?",
+        "Bạn có đang thu mình cảm xúc hoặc ‘tắt’ với đồng nghiệp không?",
+        "Hỗ trợ xã hội hiện tại (bạn bè / gia đình / mentor) có đủ không?",
       ],
       actions90d: [
-        "An toàn & phục hồi trước KPI.",
-        "1 mối quan hệ tin cậy để check-in tuần.",
+        "Ưu tiên an toàn và phục hồi trước khi ép chỉ tiêu.",
+        "Chọn 1 người tin cậy để check-in mỗi tuần.",
       ],
     });
   }
 
-  // Sort priorities by severity
   const sev: Record<Severity, number> = { high: 0, medium: 1, low: 2 };
   priorities.sort((a, b) => sev[a.severity] - sev[b.severity]);
   const top = priorities.slice(0, 4);
@@ -218,25 +224,25 @@ export function buildConsultBrief(
 
   const executiveSummary =
     completeness === "full"
-      ? `Hồ sơ đủ 3 trục (${names}). Ưu tiên tư vấn: ${top[0]?.title ?? "duy trì & tinh chỉnh"}. Buổi 1: xác nhận bối cảnh + chọn 1–2 đòn bẩy 90 ngày; không dàn trải.`
-      : `Hồ sơ một phần (${names || "chưa có"}). Vẫn tư vấn được theo trục đã có; khuyến nghị bổ sung ${(["iq", "eq", "engage"] as TestType[])
+      ? `Hồ sơ đủ 3 trục (${names}). Ưu tiên tư vấn: ${top[0]?.title ?? "duy trì và tinh chỉnh"}. Buổi 1: xác nhận bối cảnh và chọn 1–2 đòn bẩy trong 90 ngày — không dàn trải.`
+      : `Hồ sơ một phần (${names || "chưa có"}). Vẫn tư vấn được theo trục đã có; nên bổ sung ${(["iq", "eq", "engage"] as TestType[])
           .filter((t) => !types.includes(t))
           .map((t) => TESTS[t].shortName)
-          .join(", ")} để tránh quyết định lệch.`;
+          .join(", ")} để quyết định cân bằng hơn.`;
 
   const sessionAgenda = [
-    "0–5’: Mục tiêu buổi & giới hạn (không chẩn đoán lâm sàng).",
-    "5–15’: Duyệt brief + client xác nhận/phản bác dữ liệu.",
-    "15–30’: Đào 1–2 priority severity cao (câu hỏi coach).",
-    "30–40’: Chọn 2–3 hành động 90 ngày + chỉ số theo dõi.",
-    "40–45’: Lịch follow-up & kênh hỗ trợ.",
+    "0–5 phút: Mục tiêu buổi và giới hạn (không chẩn đoán lâm sàng).",
+    "5–15 phút: Duyệt tóm tắt — bạn xác nhận hoặc phản biện dữ liệu.",
+    "15–30 phút: Đào sâu 1–2 ưu tiên quan trọng nhất.",
+    "30–40 phút: Chọn 2–3 hành động 90 ngày và cách theo dõi.",
+    "40–45 phút: Lịch follow-up và kênh hỗ trợ.",
   ];
 
   const highCount = top.filter((p) => p.severity === "high").length;
   const suggestedPackage =
     highCount >= 2 || completeness === "full"
-      ? "Gói 3 buổi (0–30–60 ngày): chẩn đoán → thực hành → review"
-      : "Buổi đơn 45’ + optional follow-up 30’ sau 3–4 tuần";
+      ? "Gợi ý: gói 3 buổi (0–30–60 ngày) — làm rõ → thực hành → rà soát"
+      : "Gợi ý: buổi đơn 45 phút + follow-up 30 phút sau 3–4 tuần (tuỳ chọn)";
 
   const suggestedGoal =
     top[0]?.id === "engage-low" || top[0]?.id === "burnout-eq"
