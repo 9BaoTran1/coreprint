@@ -6,6 +6,11 @@ import { MobileStickyCta } from "@/components/MobileStickyCta";
 import { BRAND } from "@/lib/tests-meta";
 import "./globals.css";
 
+const SITE_URL = "https://9baotran1.github.io/coreprint/";
+const META_TITLE = "CorePrint | Trắc nghiệm IQ, EQ, Engage & tư vấn CRT";
+const META_DESCRIPTION =
+  "Khám phá hồ sơ IQ, EQ và mức độ gắn kết Engage bằng bộ trắc nghiệm tiếng Việt, nhận kết quả rõ ràng và đăng ký tư vấn CRT dành cho người Việt.";
+
 const body = Be_Vietnam_Pro({
   variable: "--font-body",
   subsets: ["latin", "vietnamese"],
@@ -19,25 +24,48 @@ const display = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `${BRAND.name} — ${BRAND.tagline}`,
-    template: `%s · ${BRAND.name}`,
+    default: META_TITLE,
+    template: `%s | ${BRAND.name}`,
   },
-  description: BRAND.description,
+  description: META_DESCRIPTION,
   keywords: [
-    "test IQ",
-    "test EQ",
-    "Engage",
-    "trắc nghiệm tính cách",
-    "tư vấn phát triển bản thân",
-    "25+",
-    "emotional intelligence",
+    "trắc nghiệm IQ",
+    "trắc nghiệm EQ",
+    "trắc nghiệm Engage",
+    "test IQ tiếng Việt",
+    "test EQ tiếng Việt",
+    "đánh giá gắn kết công việc",
+    "tư vấn CRT",
+    "tư vấn CRT Việt Nam",
+    "phát triển bản thân",
+    "CorePrint",
   ],
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
-    title: `${BRAND.name} — IQ · EQ · Engage`,
-    description: BRAND.description,
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    url: "./",
+    siteName: BRAND.name,
+    images: [
+      {
+        url: "og.png",
+        width: 1200,
+        height: 630,
+        alt: "CorePrint — Trắc nghiệm IQ, EQ, Engage và tư vấn CRT",
+      },
+    ],
     type: "website",
     locale: "vi_VN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    images: ["og.png"],
   },
 };
 

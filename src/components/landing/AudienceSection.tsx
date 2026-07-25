@@ -22,11 +22,11 @@ export function AudienceSection() {
             Đối tượng 25+
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-            Không phải quiz tuổi teen — đây là gương soi cho giai đoạn “xây dựng”
+            Giai đoạn “xây” — cần gương soi, không cần quiz teen
           </h2>
           <p className="mt-4 text-white/70 leading-relaxed">
-            Từ 25 trở đi, quyết định nghề nghiệp, tài chính cảm xúc, quan hệ và năng lượng
-            bắt đầu đan xen. CorePrint được viết bằng ngôn ngữ trưởng thành, insight thực dụng.
+            Từ 25 trở đi, nghề, quan hệ và năng lượng đan vào nhau. CorePrint dùng ngôn ngữ
+            trưởng thành: đo xong mang REF vào form CRT, nói chuyện có dữ liệu.
           </p>
         </div>
 

@@ -24,13 +24,13 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 | B2 | Loading/empty states quiz mượt hơn | Codex | done | Thêm màn khởi động pulse, fallback khi thiếu câu hỏi và tiến độ an toàn. |
 | B3 | Trang kết quả: nút share kết quả (copy REF) | Codex | done | Thêm sao chép REF/tóm tắt, có fallback clipboard và phản hồi 2 giây. |
 | B4 | Visual polish Antigravity (spacing/type) | Antigravity | todo | `globals.css`, landing/* |
-| B5 | SEO meta + OG image đơn giản | Codex | todo | `layout.tsx`, `public/` |
+| B5 | SEO meta + OG image đơn giản | Codex | done | Thêm SEO IQ/EQ/Engage/CRT, metadataBase GitHub Pages và ảnh OG 1200×630. |
 
 ## Track C — Nội dung & funnel CRT (Grok + Antigravity)
 
 | ID | Task | Owner | Status | Paths |
 |----|------|-------|--------|-------|
-| C1 | Copy tiếng Việt gọn cho 25+ | Antigravity | todo | landing Hero/Why/Cta |
+| C1 | Copy tiếng Việt gọn cho 25+ | Grok | done | Hero/Why/Tests/Audience/Process gọn hơn |
 | C2 | Checklist mang REF vào form Tally | Grok | done | checklist /lien-he + tip trên BriefPanel |
 | C3 | SĐT/email thật (thay placeholder) | User | blocked | Footer, CtaSection |
 

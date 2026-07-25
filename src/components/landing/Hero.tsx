@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles, ShieldCheck, Users } from "lucide-react";
-import { BRAND } from "@/lib/tests-meta";
 import { ConsultCta } from "@/components/consultation/ConsultCta";
 
 export function Hero() {
@@ -10,20 +9,21 @@ export function Hero() {
         <div className="animate-fade-up">
           <span className="section-label">
             <Sparkles className="h-3.5 w-3.5 text-accent" />
-            Assessment có cấu trúc chuẩn — không phải quiz chơi
+            Dành cho 25+ — không phải quiz giải trí
           </span>
           <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] tracking-tight text-ink md:text-5xl lg:text-[3.4rem]">
-            Đo đúng trục.{" "}
-            <span className="text-accent">Tư vấn có dữ liệu.</span>
+            Hiểu mình rõ hơn.{" "}
+            <span className="text-accent">Tư vấn CRT có dữ liệu.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-            {BRAND.description} Quy trình: đo nghiêm túc → báo cáo index/branch →{" "}
-            <strong className="text-ink">consultation brief</strong> → buổi 1:1.
+            Ba bài free: <strong className="text-ink">IQ · EQ · Engage</strong>. Làm nghiêm túc
+            → báo cáo + brief → đăng ký buổi CRT 1:1. Không gắn nhãn cứng; dùng để chọn 1–2 ưu
+            tiên 90 ngày.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/#tests" className="btn-primary">
-              Bắt đầu assessment
+              Bắt đầu đo
               <ArrowRight className="h-4 w-4" />
             </Link>
             <ConsultCta
@@ -56,7 +56,7 @@ export function Hero() {
             <div className="absolute -bottom-10 -left-6 h-36 w-36 rounded-full bg-teal/10 blur-2xl" />
 
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-              Full stack profile
+              Ví dụ hồ sơ 3 trục
             </p>
             <div className="mt-5 space-y-3">
               {[
@@ -84,8 +84,8 @@ export function Hero() {
             <div className="mt-5 flex items-start gap-2 rounded-xl bg-teal-soft/60 px-3 py-3 text-sm text-ink">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
               <p>
-                Kết quả chỉ mang tính định hướng phát triển. Tư vấn 1:1 giúp biến insight
-                thành kế hoạch 90 ngày.
+                Kết quả mang tính định hướng — không thay bài official có license. Buổi CRT
+                giúp chốt 1–2 việc làm trong 90 ngày.
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export function Hero() {
           <div className="absolute -bottom-4 left-6 right-6 flex items-center gap-2 rounded-2xl border border-line bg-white px-4 py-3 shadow-lg md:left-10 md:right-10">
             <Users className="h-4 w-4 text-accent" />
             <p className="text-xs text-muted md:text-sm">
-              Thiết kế cho professional, founder, specialist — không phải quiz giải trí.
+              Cho người đi làm, lead, founder — ngôn ngữ trưởng thành, insight thực dụng.
             </p>
           </div>
         </div>

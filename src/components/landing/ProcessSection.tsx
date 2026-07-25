@@ -21,9 +21,9 @@ export function ProcessSection() {
     <section id="process" className="scroll-mt-24 py-16 md:py-20">
       <div className="container-page">
         <div className="text-center">
-          <span className="section-label">Quy trình có giá trị tư vấn</span>
+          <span className="section-label">3 bước gọn</span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Từ assessment → brief → buổi 1:1
+            Đo → brief → CRT tư vấn
           </h2>
         </div>
 

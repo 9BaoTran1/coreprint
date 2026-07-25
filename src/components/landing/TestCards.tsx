@@ -8,13 +8,13 @@ export function TestCards() {
     <section id="tests" className="scroll-mt-24 py-16 md:py-20">
       <div className="container-page">
         <div className="max-w-2xl">
-          <span className="section-label">Assessment battery</span>
+          <span className="section-label">Ba bài free</span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Ba trục — đủ để mở buổi tư vấn
+            IQ · EQ · Engage — đủ mở buổi CRT
           </h2>
           <p className="mt-3 text-muted">
-            Làm trong điều kiện nghiêm túc. Khuyến nghị đủ 3 bài để brief đầy đủ. Mỗi bài bám một
-            chuẩn quốc tế (item original).
+            Làm yên tĩnh, không tra cứu. Nên đủ 3 bài để brief đầy đủ. Mỗi trục bám một chuẩn
+            quốc tế (câu hỏi original).
           </p>
         </div>
 

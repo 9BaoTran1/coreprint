@@ -3,23 +3,23 @@ import { Compass, Lightbulb, Target, Timer } from "lucide-react";
 const items = [
   {
     icon: Timer,
-    title: "Tiết kiệm vòng loay hoay",
-    desc: "Thay vì “cảm giác mơ hồ”, bạn có dữ liệu ban đầu về tư duy, cảm xúc và động lực — điểm khởi đầu rõ cho quyết định 25+.",
+    title: "Bớt mơ hồ khi quyết định",
+    desc: "Thay vì “cảm giác không ổn”, bạn có điểm xuất phát về tư duy, cảm xúc và năng lượng — đủ để nói chuyện có trọng tâm.",
   },
   {
     icon: Lightbulb,
-    title: "Insight tức thì, không sáo rỗng",
-    desc: "Mỗi bài test trả về band, radar chiều, và gợi ý hành vi cụ thể — không chỉ một con số đơn lẻ.",
+    title: "Insight rõ, không sáo",
+    desc: "Mỗi bài cho band, các chiều/index, và gợi ý hành vi — không chỉ một con số rồi thôi.",
   },
   {
     icon: Target,
-    title: "Neo vào hành động 90 ngày",
-    desc: "Kết quả free là bản đồ sơ bộ. Buổi tư vấn giúp ưu tiên 1–2 đòn bẩy thay vì checklist 20 mục không làm được.",
+    title: "Chốt 1–2 việc / 90 ngày",
+    desc: "Test free là bản đồ. Buổi CRT giúp chọn đòn bẩy thay vì list 20 mục không ai làm nổi.",
   },
   {
     icon: Compass,
-    title: "Đa chiều, không một nhãn dán",
-    desc: "IQ cao không đủ nếu EQ thấp. Engage cao có thể là overwork. CorePrint nhìn cả hệ — không gắn nhãn cứng.",
+    title: "Nhìn cả hệ, không dán nhãn",
+    desc: "IQ cao chưa đủ nếu EQ thấp. Engage cao đôi khi là overwork. CorePrint nhìn ba trục cùng lúc.",
   },
 ];
 
@@ -31,15 +31,15 @@ export function WhySection() {
           <div>
             <span className="section-label">Vì sao CorePrint</span>
             <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-              Concept tương tự personal test — nhưng sâu và đa dạng hơn
+              Đo free có cấu trúc — mở được buổi CRT
             </h2>
           </div>
           <p className="text-muted leading-relaxed">
-            CorePrint căn cấu trúc theo công cụ quốc tế có chuẩn hóa / chứng chỉ hành nghề:
-            <strong className="text-ink"> WAIS-IV</strong> (Pearson),{" "}
-            <strong className="text-ink">MSCEIT + ESCI</strong> (MHS / Korn Ferry),{" "}
-            <strong className="text-ink">UWES-17</strong> (Schaufeli). Item original — không thay
-            bản official; đủ sâu để tư vấn 25+ có căn cứ.
+            Bám khung công cụ chuẩn:{" "}
+            <strong className="text-ink">WAIS-IV</strong> (IQ),{" "}
+            <strong className="text-ink">MSCEIT / ESCI</strong> (EQ),{" "}
+            <strong className="text-ink">UWES-17</strong> (Engage). Item original — không thay bản
+            official; đủ sâu để coach/tư vấn 25+ có căn cứ, không phải quiz “cho vui”.
           </p>
         </div>
 
