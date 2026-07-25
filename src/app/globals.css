@@ -187,3 +187,20 @@ body {
 .animate-fade-up {
   animation: fade-up 0.55s ease both;
 }
+
+/* FAQ / details polish */
+details.glass-card > summary {
+  user-select: none;
+}
+
+details.glass-card[open] {
+  border-color: color-mix(in srgb, var(--ink) 12%, var(--line));
+}
+
+/* Touch-friendly minimum on mobile primary actions */
+@media (max-width: 767px) {
+  .btn-primary,
+  .btn-secondary {
+    min-height: 2.75rem;
+  }
+}

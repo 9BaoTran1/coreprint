@@ -5,10 +5,10 @@ import { IQ_QUESTIONS } from "@/data/iq-questions";
 
 export const BRAND = {
   name: "CorePrint",
-  tagline: "Battery bám chuẩn quốc tế — cho tư vấn 25+",
+  tagline: "IQ · EQ · Engage — tư vấn CRT có dữ liệu",
   subtitle: "WAIS-aligned · MSCEIT/ESCI-aligned · UWES-17",
   description:
-    "Ba assessment mô phỏng cấu trúc bài official (đổi item, không copy bản quyền): Wechsler indexes, MSCEIT ability branches + ESCI map, UWES-17 norms. Đầu ra là consultation brief — dùng được trong buổi tư vấn, không phải quiz giải trí.",
+    "Ba assessment free bám khung chuẩn quốc tế (item original): IQ (Wechsler indexes), EQ (MSCEIT branches + ESCI), Engage (UWES-17). Ra báo cáo + brief — mở buổi CRT 1:1, không phải quiz giải trí.",
 };
 
 export const TESTS: Record<TestType, TestMeta> = {

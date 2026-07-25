@@ -1,51 +1,53 @@
-# CorePrint — IQ · EQ · Engage (25+)
+# CorePrint — IQ · EQ · Engage + CRT tư vấn
 
-Landing + multi-test platform inspired by [Personal Test](https://personaltest-rho.vercel.app/), expanded for adults 25+: cognitive profile (IQ), emotional intelligence (EQ), and engagement/drive (Engage), with a consultation lead funnel.
+Landing + multi-test platform for adults 25+: cognitive profile (IQ), emotional intelligence (EQ), and engagement/drive (Engage), with CRT consultation funnel (Tally).
+
+## Live
+
+**https://9baotran1.github.io/coreprint/**
+
+> Mở đúng URL có `/coreprint/`.
+
+| | |
+|--|--|
+| Repo | https://github.com/9BaoTran1/coreprint |
+| CRT form | https://tally.so/r/81WAjP |
+| Domain đề xuất | **coreprint.online** — xem [DOMAIN.md](./DOMAIN.md) |
 
 ## Stack
 
 - Next.js (App Router) + TypeScript + Tailwind CSS v4
-- Client-side scoring & localStorage results
-- Vietnamese UI, mature visual system
+- Static export → GitHub Pages (free)
+- Client-side scoring & localStorage
+- Vietnamese UI
 
 ## Scripts
 
 ```bash
 npm run dev      # http://localhost:3000
-npm run build    # static export → /out (local, no basePath)
-npm run start    # not used for static export; serve /out with any static host
+npm run build    # static → /out
 ```
-
-## Hosting (free) — LIVE
-
-**Website:** https://9baotran1.github.io/coreprint/
-
-> Đúng URL có `/coreprint/` (không mở `github.com/...` raw repo).
-
-- Auto deploy: mỗi `git push master` → GitHub Actions → Pages  
-- Actions: https://github.com/9BaoTran1/coreprint/actions  
-- Scale **300–500 users/tháng**: free tier đủ (static + form Tally)  
-- Local build: no `basePath`; CI set `GH_PAGES=true` → prefix `/coreprint`
 
 ## Routes
 
-| Path | Description |
-|------|-------------|
-| `/` | Landing |
-| `/test/iq` · `/test/eq` · `/test/engage` | Quiz engines |
-| `/ket-qua/[type]` | Results + CTA CRT tư vấn |
-| `/lien-he` | Embed form CRT tư vấn (Tally) |
+| Path | Mô tả |
+|------|--------|
+| `/` | Landing + FAQ |
+| `/test/iq` · `/eq` · `/engage` | Quiz |
+| `/ket-qua/[type]` | Kết quả + copy REF + CRT |
+| `/ho-so` | Hồ sơ + brief |
+| `/lien-he` | Embed form CRT (Tally) |
+| `/phuong-phap` | Methodology |
 
-## CRT tư vấn
+## Domain
 
-Primary booking form (Tally):
+Chốt đề xuất: **`coreprint.online`**.  
+Hướng dẫn DNS + Pages: [DOMAIN.md](./DOMAIN.md).
 
-**https://tally.so/r/81WAjP**
-
-Configured in `src/lib/constants.ts` (`CRT_CONSULT_URL`). All “Đặt lịch tư vấn” CTAs open this link.
+Hiện **chưa gắn CNAME** (tránh gãy github.io trước khi mua DNS).
 
 ## Notes
 
-- Tests are **developmental profiles**, not clinical assessments.
-- Booking leads go to Tally (CRT). Local `ContactForm` is unused legacy demo.
-- Update phone / email in `Footer` and `CtaSection` as needed.
+- Assessment định hướng — không thay WAIS/MSCEIT/EQ-i official hay chẩn đoán lâm sàng.
+- Lead CRT → Tally. SĐT: set trong `src/lib/site.ts` khi có số thật.
+- Copy rải link: [SHARE_COPY.md](./SHARE_COPY.md)

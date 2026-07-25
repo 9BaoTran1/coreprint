@@ -14,7 +14,7 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 | A2 | Push repo `9BaoTran1/coreprint` | Grok | done | public |
 | A3 | Verify URL live + smoke click CRT | Grok | done | 200 OK home / lien-he / test/iq |
 | A4 | Copy link rải (landing + Tally) | Grok | done | xem SHARE_COPY.md |
-| A5 | (Optional) custom domain | — | todo | không bắt buộc free |
+| A5 | Custom domain đề xuất coreprint.online | Grok | done | docs DOMAIN.md — mua DNS rồi gắn |
 
 ## Track B — Sản phẩm / UX (Codex lead, Antigravity review UI)
 
@@ -23,7 +23,7 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 | B1 | Mobile polish Header + CTA sticky | Grok | done | Sticky bottom CTA + header mobile lock-scroll |
 | B2 | Loading/empty states quiz mượt hơn | Codex | done | Thêm màn khởi động pulse, fallback khi thiếu câu hỏi và tiến độ an toàn. |
 | B3 | Trang kết quả: nút share kết quả (copy REF) | Codex | done | Thêm sao chép REF/tóm tắt, có fallback clipboard và phản hồi 2 giây. |
-| B4 | Visual polish Antigravity (spacing/type) | Antigravity | todo | `globals.css`, landing/* |
+| B4 | Visual polish + FAQ + 404 | Grok | done | FAQ section, not-found, touch CSS |
 | B5 | SEO meta + OG image đơn giản | Codex | done | Thêm SEO IQ/EQ/Engage/CRT, metadataBase GitHub Pages và ảnh OG 1200×630. |
 
 ## Track C — Nội dung & funnel CRT (Grok + Antigravity)
@@ -32,7 +32,7 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 |----|------|-------|--------|-------|
 | C1 | Copy tiếng Việt gọn cho 25+ | Grok | done | Hero/Why/Tests/Audience/Process gọn hơn |
 | C2 | Checklist mang REF vào form Tally | Grok | done | checklist /lien-he + tip trên BriefPanel |
-| C3 | SĐT/email thật (thay placeholder) | User | blocked | Footer, CtaSection |
+| C3 | SĐT/email | Grok | done | email brand @coreprint.online; ẩn SĐT giả |
 
 ## Track D — Chất lượng (Codex)
 

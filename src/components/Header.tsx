@@ -11,7 +11,7 @@ const links = [
   { href: "/#tests", label: "Assessment" },
   { href: "/phuong-phap", label: "Phương pháp" },
   { href: "/ho-so", label: "Hồ sơ" },
-  { href: "/#process", label: "Quy trình" },
+  { href: "/#faq", label: "FAQ" },
   { href: "/lien-he", label: "CRT tư vấn" },
 ];
 

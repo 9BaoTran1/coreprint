@@ -1,4 +1,5 @@
-import { Phone } from "lucide-react";
+import Link from "next/link";
+import { FileText } from "lucide-react";
 import { ConsultCta } from "@/components/consultation/ConsultCta";
 
 export function CtaSection() {
@@ -11,19 +12,16 @@ export function CtaSection() {
               Đã có hồ sơ? Biến insight thành kế hoạch.
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
-              Đăng ký CRT tư vấn qua form — team sẽ liên hệ theo thông tin bạn để lại. Mang theo
-              REF / kết quả IQ · EQ · Engage để buổi nói chuyện đi thẳng vào trọng tâm.
+              Đăng ký CRT tư vấn qua form — team liên hệ theo thông tin bạn để lại. Mang REF /
+              kết quả IQ · EQ · Engage để buổi nói chuyện đi thẳng trọng tâm.
             </p>
           </div>
           <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row md:mt-0 md:w-auto md:flex-col lg:flex-row">
             <ConsultCta source="landing-cta" className="w-full whitespace-nowrap sm:w-auto" />
-            <a
-              href="tel:+84900000000"
-              className="btn-secondary w-full whitespace-nowrap sm:w-auto"
-            >
-              <Phone className="h-4 w-4" />
-              Gọi nhanh
-            </a>
+            <Link href="/ho-so" className="btn-secondary w-full whitespace-nowrap sm:w-auto">
+              <FileText className="h-4 w-4" />
+              Xem hồ sơ
+            </Link>
           </div>
         </div>
       </div>
