@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,8 +15,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,23 +33,35 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Build static export
+      - name: Build static export (GH Pages basePath)
         env:
           GH_PAGES: "true"
         run: npm run build
+
+      - name: Ensure .nojekyll (allow _next assets)
+        run: |
+          touch out/.nojekyll
+          ls -la out | head -30
+          test -d out/_next && echo "OK _next present" || (echo "MISSING _next" && exit 1)
+          test -f out/index.html && echo "OK index.html" || (echo "MISSING index.html" && exit 1)
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: out
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Also publish gh-pages branch (fallback host)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          force_orphan: true
+          enable_jekyll: false
+          cname: ""
