@@ -38,13 +38,13 @@ export default function ProfilePage() {
   return (
     <div className="container-page py-10 md:py-14">
       <div className="max-w-2xl">
-        <span className="section-label">Hồ sơ CorePrint</span>
+        <span className="section-label">Hồ sơ của bạn</span>
         <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-          Tổng hợp battery — nền cho tư vấn
+          Tổng hợp ba trục — nền cho tư vấn CRT
         </h1>
         <p className="mt-3 text-muted leading-relaxed">
-          Đây không phải trang giải trí. Mỗi bài bám cấu trúc công cụ chuẩn (WAIS-aligned ·
-          MSCEIT/ESCI · UWES-17). Brief bên dưới dùng trực tiếp trong buổi 1:1.
+          Xem nhanh kết quả IQ · EQ · Engage đã làm trên thiết bị này. Phần tóm tắt bên dưới
+          giúp buổi tư vấn 1:1 đi thẳng vào ưu tiên, không bắt đầu từ con số không.
         </p>
       </div>
 
@@ -94,12 +94,12 @@ export default function ProfilePage() {
       <div className="mt-10">
         {count === 0 || !brief ? (
           <div className="glass-card p-8 text-center">
-            <p className="font-semibold text-ink">Chưa có dữ liệu trên thiết bị này</p>
+            <p className="font-semibold text-ink">Chưa có kết quả trên thiết bị này</p>
             <p className="mt-2 text-sm text-muted">
-              Hoàn thành ít nhất 1 bài (khuyến nghị cả 3) trong điều kiện đo nghiêm túc.
+              Hãy hoàn thành ít nhất một bài đo (nên làm đủ ba) ở nơi yên tĩnh, trả lời trung thực.
             </p>
             <Link href="/#tests" className="btn-primary mt-6 inline-flex">
-              Chọn bài assessment
+              Chọn bài đo
             </Link>
           </div>
         ) : (
@@ -109,9 +109,9 @@ export default function ProfilePage() {
 
       {count > 0 && count < 3 && (
         <p className="mt-6 text-center text-sm text-muted">
-          Còn {3 - count} bài — hồ sơ full cho tư vấn chính xác hơn.{" "}
+          Còn {3 - count} bài — hồ sơ đầy đủ giúp buổi tư vấn chính xác hơn.{" "}
           <Link href="/#tests" className="font-medium text-ink underline">
-            Bổ sung ngay
+            Làm tiếp
           </Link>
         </p>
       )}

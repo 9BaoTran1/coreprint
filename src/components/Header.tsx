@@ -8,11 +8,11 @@ import { CRT_CONSULT_URL } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
 const links = [
-  { href: "/#tests", label: "Assessment" },
+  { href: "/#tests", label: "Bài đo" },
   { href: "/phuong-phap", label: "Phương pháp" },
   { href: "/ho-so", label: "Hồ sơ" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/lien-he", label: "CRT tư vấn" },
+  { href: "/#faq", label: "Hỏi đáp" },
+  { href: "/lien-he", label: "Tư vấn CRT" },
 ];
 
 export function Header() {
@@ -46,7 +46,7 @@ export function Header() {
             <span className="block truncate font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
               {BRAND.name}
             </span>
-            <span className="hidden text-[11px] text-muted sm:block">Battery tư vấn 25+</span>
+            <span className="hidden text-[11px] text-muted sm:block">Hồ sơ 25+ · tư vấn có dữ liệu</span>
           </span>
         </Link>
 
@@ -69,13 +69,13 @@ export function Header() {
             rel="noopener noreferrer"
             className="btn-secondary hidden !px-3 !py-2 text-sm md:inline-flex"
           >
-            CRT tư vấn
+            Tư vấn CRT
           </a>
           <Link
             href="/#tests"
             className="btn-primary hidden !px-4 !py-2.5 text-sm md:inline-flex"
           >
-            Bắt đầu đo
+            Làm bài đo
           </Link>
           <button
             type="button"
@@ -113,14 +113,14 @@ export function Header() {
             className="btn-secondary mt-2 min-h-11"
             onClick={() => setOpen(false)}
           >
-            CRT tư vấn
+            Tư vấn CRT
           </a>
           <Link
             href="/#tests"
             className="btn-primary mt-2 min-h-11"
             onClick={() => setOpen(false)}
           >
-            Bắt đầu đo
+            Làm bài đo
           </Link>
         </div>
       </div>

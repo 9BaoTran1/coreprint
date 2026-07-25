@@ -24,7 +24,7 @@ export const CERTIFIED_REFS = {
       note: "Fluid reasoning không lời — CorePrint phần PRI mô phỏng dạng matrix/series, item original.",
     },
     coreprintAlign:
-      "CORE 34 items · VCI 12 + PRI 12 (Raven-style matrix/series) + WMI 10 · FSIQ-style composite · timed 25’ · weighted difficulty · audited rationales. Không phải WAIS/Raven clinical.",
+      "CorePrint đo tư duy qua 34 câu (khoảng 25 phút), chia nhóm ngôn ngữ – suy luận – trí nhớ làm việc. Kết quả mang tính định hướng; không thay bài đo lâm sàng chính thức.",
   },
   eq: {
     ability: {
@@ -63,7 +63,7 @@ export const CERTIFIED_REFS = {
       ],
     },
     coreprintAlign:
-      "CORE 20 SJT · 5 items × 4 MSCEIT branches · expert partial credit 0/1/2 · map ESCI. Ability model (không Likert trait). Không phải MSCEIT/EQ-i license.",
+      "CorePrint đo EQ qua 20 tình huống thực tế, chấm theo mức độ hiệu quả của hành vi cảm xúc – xã hội. Dùng cho phát triển và tư vấn; không thay bài đo chính thức có bản quyền.",
   },
   engage: {
     primary: {
@@ -109,7 +109,7 @@ export const CERTIFIED_REFS = {
       },
     },
     coreprintAlign:
-      "CORE UWES-17 exact structure 6+5+6 · scale 0–6 · mean scoring · Table 33 bands (N=2313) · construct-mapped Vietnamese items · no reverse keys (official positive-keyed).",
+      "CorePrint đo mức gắn kết – năng lượng công việc qua 17 câu ngắn (thang 0–6). Kết quả giúp nhận diện sức sống, gắn kết và tập trung; mang tính định hướng sức khỏe nghề nghiệp.",
   },
 } as const;
 

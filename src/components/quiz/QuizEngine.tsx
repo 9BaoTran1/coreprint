@@ -164,7 +164,7 @@ export function QuizEngine({ type }: { type: TestType }) {
           <div>
             <p className="text-sm text-muted">{meta.name}</p>
             <h1 className="font-display text-2xl font-semibold text-ink md:text-3xl">
-              Quy trình đo chuẩn hóa (phiên bản CorePrint)
+              Hướng dẫn trước khi làm bài
             </h1>
           </div>
         </div>
@@ -197,12 +197,12 @@ export function QuizEngine({ type }: { type: TestType }) {
               <Shield className="mx-auto h-4 w-4 text-accent" />
               <p className="mt-1 font-semibold text-ink">
                 {protocol.format === "binary"
-                  ? "Đúng/Sai"
+                  ? "Một đáp án đúng"
                   : protocol.format === "sjt"
-                    ? "SJT 0/1/2"
-                    : "Thang 0–6"}
+                    ? "Tình huống"
+                    : "Thang mức độ"}
               </p>
-              <p className="text-[11px] text-muted">Định dạng chấm</p>
+              <p className="text-[11px] text-muted">Dạng câu hỏi</p>
             </div>
           </div>
 

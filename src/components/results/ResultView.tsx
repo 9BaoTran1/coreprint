@@ -111,10 +111,10 @@ export function ResultView({ type }: { type: TestType }) {
   return (
     <div className="container-page py-10 md:py-14">
       <div className="mb-6 rounded-2xl border border-teal/25 bg-teal-soft/50 px-4 py-3 text-sm text-ink">
-        <strong>Assessment — không phải quiz giải trí.</strong> Kết quả + brief bên dưới dùng
-        để mở buổi tư vấn. Đọc{" "}
+        <strong>Báo cáo định hướng — không phải quiz giải trí.</strong> Kết quả và tóm tắt bên
+        dưới dùng để mở buổi tư vấn. Xem thêm{" "}
         <Link href="/phuong-phap" className="font-semibold underline">
-          phương pháp & chuẩn tham chiếu
+          phương pháp đo
         </Link>
         .
       </div>
@@ -155,9 +155,9 @@ export function ResultView({ type }: { type: TestType }) {
 
             <div className="p-6 md:p-8">
               <div className="flex flex-wrap items-end justify-between gap-2">
-                <h2 className="text-lg font-semibold text-ink">Phân tích theo chiều / index</h2>
+                <h2 className="text-lg font-semibold text-ink">Chi tiết theo nhóm năng lực</h2>
                 <p className="text-xs text-muted">
-                  Điểm thô: {result.rawScore}/{result.maxScore}
+                  Điểm đạt: {result.rawScore}/{result.maxScore}
                 </p>
               </div>
               <div className="mt-4 space-y-4">
@@ -167,9 +167,9 @@ export function ResultView({ type }: { type: TestType }) {
                       <span className="font-medium text-ink">{d.label}</span>
                       <span className="shrink-0 text-right text-muted">
                         {d.mean != null
-                          ? `M=${d.mean}/6`
+                          ? `TB ${d.mean}/6`
                           : d.indexScore != null
-                            ? `Index ~${d.indexScore}`
+                            ? `~${d.indexScore}`
                             : `${d.percent}%`}
                         <span className="ml-1 text-[11px] opacity-70">
                           ({d.percent}% · {d.score}/{d.max})
@@ -192,7 +192,7 @@ export function ResultView({ type }: { type: TestType }) {
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="glass-card p-6">
-              <h3 className="font-semibold text-ink">Insight (cho coach & bạn)</h3>
+              <h3 className="font-semibold text-ink">Nhận định chính</h3>
               <ul className="mt-3 space-y-2.5">
                 {result.insights.map((item) => (
                   <li
@@ -224,25 +224,25 @@ export function ResultView({ type }: { type: TestType }) {
 
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <div className="glass-card p-6">
-            <h3 className="font-display text-xl font-semibold text-ink">Bước tiếp: CRT tư vấn</h3>
+            <h3 className="font-display text-xl font-semibold text-ink">Bước tiếp theo</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Mang REF + brief. Coach sẽ không bắt đầu từ con số không — đã có priority & câu hỏi
-              sẵn.
+              Mang mã REF và tóm tắt ưu tiên vào buổi tư vấn CRT — người tư vấn đã có điểm tựa
+              để đi thẳng vào trọng tâm.
             </p>
             <ConsultCta source={`ket-qua-${type}`} className="mt-5 w-full" />
             <Link href="/ho-so" className="btn-secondary mt-3 w-full">
               <FileText className="h-4 w-4" />
-              Hồ sơ tổng + brief đầy đủ
+              Hồ sơ tổng hợp
             </Link>
             <Link href={`/test/${type}`} className="btn-secondary mt-3 w-full">
               <RefreshCw className="h-4 w-4" />
-              Đo lại (sau khi luyện)
+              Làm lại bài này
             </Link>
           </div>
 
           <div className="glass-card p-6">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
-              Bổ sung để brief chính xác hơn
+              Bổ sung để hồ sơ đầy đủ hơn
             </h3>
             <div className="mt-3 space-y-2">
               {others.map((t) => (
@@ -267,10 +267,10 @@ export function ResultView({ type }: { type: TestType }) {
               Giá trị & giới hạn
             </p>
             <p className="mt-1.5 leading-relaxed">
-              Dùng được cho coaching career / EI / energy. Không thay WAIS·MSCEIT·EQ-i·ESCI official
-              hay chẩn đoán lâm sàng.{" "}
+              Phù hợp định hướng nghề nghiệp, lãnh đạo và năng lượng làm việc. Không thay bài
+              đo chính thức hay chẩn đoán lâm sàng.{" "}
               <span className="inline-flex items-center gap-1">
-                <Download className="h-3 w-3" /> Chụp màn hình REF khi tư vấn.
+                <Download className="h-3 w-3" /> Nên chụp màn hình mã REF trước khi tư vấn.
               </span>
             </p>
             <p className="mt-3 font-mono text-[11px] text-ink/70">

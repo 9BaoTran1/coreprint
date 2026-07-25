@@ -25,7 +25,7 @@ export function MobileStickyCta() {
           className="btn-primary min-h-11 flex-1 !px-3 !py-2.5 text-sm"
         >
           <Play className="h-4 w-4" />
-          Bắt đầu đo
+          Làm bài
         </Link>
         <a
           href={CRT_CONSULT_URL}
@@ -34,7 +34,7 @@ export function MobileStickyCta() {
           className="btn-secondary min-h-11 flex-1 !px-3 !py-2.5 text-sm"
         >
           <MessageCircle className="h-4 w-4" />
-          CRT tư vấn
+          Tư vấn CRT
         </a>
       </div>
     </div>

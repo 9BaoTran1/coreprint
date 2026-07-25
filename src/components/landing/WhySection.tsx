@@ -3,23 +3,23 @@ import { Compass, Lightbulb, Target, Timer } from "lucide-react";
 const items = [
   {
     icon: Timer,
-    title: "Bớt mơ hồ khi quyết định",
-    desc: "Thay vì “cảm giác không ổn”, bạn có điểm xuất phát về tư duy, cảm xúc và năng lượng — đủ để nói chuyện có trọng tâm.",
+    title: "Bớt mơ hồ khi cần quyết định",
+    desc: "Thay vì chỉ “cảm giác không ổn”, bạn có điểm xuất phát rõ về tư duy, cảm xúc và năng lượng — đủ để nói chuyện có trọng tâm.",
   },
   {
     icon: Lightbulb,
-    title: "Insight rõ, không sáo",
-    desc: "Mỗi bài cho band, các chiều/index, và gợi ý hành vi — không chỉ một con số rồi thôi.",
+    title: "Kết quả cụ thể, không sáo rỗng",
+    desc: "Mỗi bài cho mức tổng quan, chi tiết theo từng nhóm năng lực, và gợi ý hành vi — không dừng ở một con số.",
   },
   {
     icon: Target,
-    title: "Chốt 1–2 việc / 90 ngày",
-    desc: "Test free là bản đồ. Buổi CRT giúp chọn đòn bẩy thay vì list 20 mục không ai làm nổi.",
+    title: "Chốt 1–2 việc trong 90 ngày",
+    desc: "Bài đo free là bản đồ. Buổi tư vấn CRT giúp chọn đòn bẩy thật sự, thay vì checklist dài không ai làm nổi.",
   },
   {
     icon: Compass,
     title: "Nhìn cả hệ, không dán nhãn",
-    desc: "IQ cao chưa đủ nếu EQ thấp. Engage cao đôi khi là overwork. CorePrint nhìn ba trục cùng lúc.",
+    desc: "Tư duy mạnh chưa đủ nếu EQ thấp. Gắn kết cao đôi khi là làm quá sức. CorePrint nhìn ba trục cùng lúc.",
   },
 ];
 
@@ -29,17 +29,15 @@ export function WhySection() {
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <span className="section-label">Vì sao CorePrint</span>
+            <span className="section-label">Vì sao chọn CorePrint</span>
             <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-              Đo free có cấu trúc — mở được buổi CRT
+              Đo miễn phí có cấu trúc — mở được buổi tư vấn thật
             </h2>
           </div>
           <p className="text-muted leading-relaxed">
-            Bám khung công cụ chuẩn:{" "}
-            <strong className="text-ink">WAIS-IV</strong> (IQ),{" "}
-            <strong className="text-ink">MSCEIT / ESCI</strong> (EQ),{" "}
-            <strong className="text-ink">UWES-17</strong> (Engage). Item original — không thay bản
-            official; đủ sâu để coach/tư vấn 25+ có căn cứ, không phải quiz “cho vui”.
+            Chúng tôi tham chiếu khung đo quốc tế cho tư duy, trí tuệ cảm xúc và gắn
+            kết công việc; câu hỏi được soạn riêng, không sao chép bài có bản quyền.
+            Đủ sâu để coach và chuyên viên tư vấn 25+ có căn cứ — không phải quiz giải trí.
           </p>
         </div>
 

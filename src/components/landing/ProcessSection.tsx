@@ -1,18 +1,18 @@
 const steps = [
   {
     n: "01",
-    title: "Đọc protocol & đo nghiêm túc",
-    desc: "Hướng dẫn điều kiện đo (yên tĩnh, không tra cứu, IQ có giờ). Trả lời trung thực — không “cho đẹp”.",
+    title: "Làm bài trong điều kiện tốt",
+    desc: "Đọc hướng dẫn ngắn, ngồi yên tĩnh, trả lời trung thực. Bài IQ có đồng hồ; EQ và Engage làm theo nhịp của bạn.",
   },
   {
     n: "02",
-    title: "Báo cáo + consultation brief",
-    desc: "Index/branch, band theo chuẩn tham chiếu, priority severity, câu hỏi coach, hành động 90 ngày.",
+    title: "Xem báo cáo & tóm tắt ưu tiên",
+    desc: "Bạn nhận mức tổng quan, chi tiết theo nhóm năng lực, gợi ý phát triển và mã REF để mang sang tư vấn.",
   },
   {
     n: "03",
-    title: "CRT tư vấn 1:1 trên dữ liệu",
-    desc: "Đăng ký form CRT, mang REF + brief. Buổi nói chuyện đi thẳng trọng tâm — không bắt đầu từ con số không.",
+    title: "Đặt buổi CRT 1:1",
+    desc: "Đăng ký form tư vấn, mang theo REF và 1–2 mục tiêu. Buổi nói chuyện đi thẳng vào trọng tâm — không bắt đầu từ con số không.",
   },
 ];
 
@@ -21,10 +21,13 @@ export function ProcessSection() {
     <section id="process" className="scroll-mt-24 py-16 md:py-20">
       <div className="container-page">
         <div className="text-center">
-          <span className="section-label">3 bước gọn</span>
+          <span className="section-label">Quy trình</span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Đo → brief → CRT tư vấn
+            Ba bước: đo → báo cáo → tư vấn CRT
           </h2>
+          <p className="mx-auto mt-3 max-w-xl text-muted">
+            Từ lần đo đầu tiên đến buổi trao đổi có cấu trúc — rõ ràng và thực tế.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">

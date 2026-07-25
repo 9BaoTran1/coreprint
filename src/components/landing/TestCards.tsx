@@ -8,13 +8,13 @@ export function TestCards() {
     <section id="tests" className="scroll-mt-24 py-16 md:py-20">
       <div className="container-page">
         <div className="max-w-2xl">
-          <span className="section-label">Ba bài free</span>
+          <span className="section-label">Ba bài đo miễn phí</span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            IQ · EQ · Engage — đủ mở buổi CRT
+            IQ · EQ · Engage — đủ để mở buổi tư vấn CRT
           </h2>
-          <p className="mt-3 text-muted">
-            Làm yên tĩnh, không tra cứu. Nên đủ 3 bài để brief đầy đủ. Mỗi trục bám một chuẩn
-            quốc tế (câu hỏi original).
+          <p className="mt-3 text-muted leading-relaxed">
+            Nên làm ở nơi yên tĩnh, trung thực. Làm đủ ba bài sẽ có tóm tắt tư vấn đầy đủ
+            hơn; làm một bài vẫn hữu ích theo trục đó.
           </p>
         </div>
 
@@ -38,11 +38,11 @@ export function TestCards() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{t.description}</p>
 
               <div className="mt-5 flex flex-wrap gap-3 text-xs text-muted">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 border border-line">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1">
                   <Clock className="h-3.5 w-3.5" />
                   {t.duration}
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 border border-line">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2.5 py-1">
                   <ListChecks className="h-3.5 w-3.5" />
                   {t.questionCount} câu
                 </span>
@@ -50,7 +50,10 @@ export function TestCards() {
 
               <ul className="mt-4 space-y-1.5">
                 {t.benefits.slice(0, 2).map((b) => (
-                  <li key={b} className="text-xs leading-relaxed text-muted before:mr-2 before:text-accent before:content-['•']">
+                  <li
+                    key={b}
+                    className="text-xs leading-relaxed text-muted before:mr-2 before:text-accent before:content-['•']"
+                  >
                     {b}
                   </li>
                 ))}
@@ -61,7 +64,7 @@ export function TestCards() {
                 className="btn-primary mt-6 w-full"
                 style={{ background: t.color }}
               >
-                Làm {t.shortName}
+                Làm bài {t.shortName}
                 <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </article>

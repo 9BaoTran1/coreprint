@@ -534,9 +534,9 @@ export const IQ_QUESTIONS: Question[] = [
 ];
 
 export const IQ_DIMENSIONS: Record<string, string> = {
-  vci: "VCI — Verbal Comprehension (WAIS-aligned)",
-  pri: "PRI — Perceptual / Fluid Reasoning (WAIS + Raven-style)",
-  wmi: "WMI — Working Memory (WAIS-aligned)",
+  vci: "Ngôn ngữ & hiểu khái niệm",
+  pri: "Suy luận logic",
+  wmi: "Trí nhớ làm việc",
 };
 
 /** Correct option id + short proof (QA / audit) */

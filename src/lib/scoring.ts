@@ -130,9 +130,9 @@ function buildNarrative(
   const protocol = PROTOCOLS[type];
 
   if (type === "iq") {
-    const ref = CERTIFIED_REFS.iq;
-    const frameworkNote = `${ref.coreprintAlign} Chuẩn tham chiếu: ${ref.primary.name} (${ref.primary.publisher}) — FSIQ + VCI/PRI/WMI mean 100 SD 15. ${ref.primary.certNote} CorePrint là battery thực hành, không phải phiên bản clinical.`;
-    const protocolLabel = "WAIS-IV-aligned indexes · timed 20’ · weighted items";
+    const frameworkNote =
+      "Bài tư duy CorePrint tham chiếu cách đọc hồ sơ nhận thức theo nhóm năng lực (ngôn ngữ, suy luận, trí nhớ làm việc). Thang điểm minh họa trung bình 100 — mang tính định hướng, không thay đánh giá lâm sàng chính thức.";
+    const protocolLabel = "34 câu · có đồng hồ 25 phút · điểm theo nhóm năng lực";
 
     const band =
       (fsiq ?? 100) >= 120
@@ -146,40 +146,40 @@ function buildNarrative(
               : "below";
     const bandLabel =
       band === "superior"
-        ? "Composite cao (trên battery)"
+        ? "Mức tổng quan: cao"
         : band === "high_avg"
-          ? "Composite trên trung bình"
+          ? "Mức tổng quan: trên trung bình"
           : band === "average"
-            ? "Composite trung bình"
+            ? "Mức tổng quan: trung bình"
             : band === "low_avg"
-              ? "Composite dưới trung bình"
-              : "Composite thấp — cần xây nền";
+              ? "Mức tổng quan: dưới trung bình"
+              : "Mức tổng quan: cần xây nền";
 
     return {
       band,
       bandLabel,
-      displayScore: `FSIQ-style ~${fsiq}`,
+      displayScore: `~${fsiq}`,
       frameworkNote,
       protocolLabel,
-      summary: `Composite ước lượng ~${fsiq} (thang minh họa mean 100, SD 15 như Wechsler). Profile index: xem VCI / PRI / WMI bên dưới — đây là cách đọc chuẩn của WAIS-IV, không chỉ một số IQ đơn.`,
+      summary: `Điểm tổng hợp ước lượng khoảng ${fsiq} (thang minh họa, trung bình 100). Hãy xem chi tiết từng nhóm năng lực bên dưới — hồ sơ thường không đều giữa các nhóm, và đó chính là phần hữu ích khi tư vấn.`,
       insights: [
-        `Index mạnh: ${strongL}${strong[0]?.indexScore != null ? ` (~${strong[0].indexScore})` : ""}.`,
-        `Index cần rèn: ${weakL}${weak[0]?.indexScore != null ? ` (~${weak[0].indexScore})` : ""}.`,
-        "Lệch index >15 điểm (ước lượng) gợi ý profile không đồng đều — tư vấn nên bám index, không chỉ FSIQ.",
-        "PSI (Processing Speed) của WAIS không đo đủ trên web text — không suy diễn tốc độ xử lý từ battery này.",
+        `Nhóm mạnh: ${strongL}${strong[0]?.indexScore != null ? ` (khoảng ${strong[0].indexScore})` : ""}.`,
+        `Nhóm cần rèn: ${weakL}${weak[0]?.indexScore != null ? ` (khoảng ${weak[0].indexScore})` : ""}.`,
+        "Nếu các nhóm lệch nhau rõ, nên trao đổi theo từng nhóm thay vì chỉ nhìn một con số tổng.",
+        "Bài web không đo đủ tốc độ xử lý như bài lâm sàng đầy đủ — không suy diễn phần đó từ kết quả này.",
       ],
       growthTips: [
-        "Rèn đúng index thấp (VCI: đọc/analogy; PRI: matrix/series; WMI: mental math + hold).",
-        "Tái đo sau 6–8 tuần luyện dạng tương đương (không học thuộc bank).",
-        "Cần kết luận lâm sàng / tuyển dụng chính thức → WAIS với chuyên gia có chứng chỉ.",
+        "Rèn đúng nhóm thấp: đọc & so sánh khái niệm (ngôn ngữ), bài suy luận/chuỗi (suy luận), giữ số liệu ngắn trong đầu (trí nhớ làm việc).",
+        "Luyện 6–8 tuần với dạng bài tương đương, rồi làm lại trong điều kiện tương tự.",
+        "Cần kết luận lâm sàng hoặc tuyển dụng chính thức: gặp chuyên gia có chứng chỉ phù hợp.",
       ],
     };
   }
 
   if (type === "eq") {
-    const ref = CERTIFIED_REFS.eq;
-    const frameworkNote = `${ref.coreprintAlign} Tham chiếu ability: ${ref.ability.name} (${ref.ability.publisher}) — 4 branches. Tham chiếu competency 360: ${ref.competency.name}. Trait inventory có cert: ${ref.trait.name} (Level B).`;
-    const protocolLabel = "MSCEIT 4-branch ability SJT · expert key 0/1/2";
+    const frameworkNote =
+      "Bài EQ CorePrint dùng tình huống thực tế, chấm theo mức độ hiệu quả của hành vi cảm xúc – xã hội. Tham chiếu mô hình năng lực cảm xúc phổ biến trong lãnh đạo và coaching — mang tính định hướng phát triển.";
+    const protocolLabel = "20 tình huống · bốn nhóm năng lực cảm xúc";
 
     const band =
       (eiq ?? 100) >= 120
@@ -189,10 +189,10 @@ function buildNarrative(
           : "developing";
     const bandLabel =
       band === "high"
-        ? "EIQ-style cao (ability SJT)"
+        ? "Mức tổng quan: cao"
         : band === "average"
-          ? "EIQ-style trung bình"
-          : "EIQ-style cần phát triển";
+          ? "Mức tổng quan: trung bình"
+          : "Mức tổng quan: cần phát triển";
 
     const esciHints = weak
       .map((d) => EQ_TO_ESCI[d.key] ?? d.label)
@@ -201,49 +201,49 @@ function buildNarrative(
     return {
       band,
       bandLabel,
-      displayScore: `EIQ-style ~${eiq}`,
+      displayScore: `~${eiq}`,
       frameworkNote,
       protocolLabel,
-      summary: `Tổng ability EI ước lượng ~${eiq} (minh họa thang MSCEIT mean 100). Bốn nhánh: Perceiving · Facilitating · Understanding · Managing. Báo cáo kèm map sang cụm ESCI để coaching leadership.`,
+      summary: `Điểm tổng quan ước lượng khoảng ${eiq} (thang minh họa, trung bình 100). Bốn nhóm: nhận biết cảm xúc, dùng cảm xúc hỗ trợ việc, hiểu cảm xúc, và điều tiết cảm xúc. Phần dưới gợi ý hướng coaching lãnh đạo.`,
       insights: [
-        `Nhánh mạnh: ${strongL}${strong[0]?.indexScore != null ? ` (~${strong[0].indexScore})` : ""}.`,
-        `Nhánh yếu: ${weakL}.`,
-        `Gợi ý ESCI (Korn Ferry/Goleman) để coach: ${esciHints}.`,
-        "MSCEIT official chấm consensus/expert trên item có bản quyền; EQ-i 2.0 là trait self-report Level B — khác mô hình. CorePrint = ability SJT gần MSCEIT hơn EQ-i.",
+        `Nhóm mạnh: ${strongL}${strong[0]?.indexScore != null ? ` (khoảng ${strong[0].indexScore})` : ""}.`,
+        `Nhóm cần phát triển: ${weakL}.`,
+        `Gợi ý năng lực lãnh đạo liên quan: ${esciHints}.`,
+        "Đây là cách chấm theo hành vi hiệu quả trong tình huống, khác với bảng tự đánh giá tính cách thuần túy.",
       ],
       growthTips: [
-        "Luyện nhánh thấp bằng journal + role-play tình huống tương tự.",
-        "Leadership track: cân nhắc ESCI 360 với coach có cert Korn Ferry.",
-        "Muốn báo cáo trait 15 subscales: EQ-i 2.0 qua practitioner Level B.",
+        "Luyện nhóm thấp bằng nhật ký cảm xúc và diễn tập tình huống tương tự trong công việc.",
+        "Nếu bạn là quản lý: xin phản hồi 360° từ team về giao tiếp và xử lý xung đột.",
+        "Muốn đo chuẩn chính thức: trao đổi với chuyên gia tư vấn có công cụ được cấp phép.",
       ],
     };
   }
 
-  // engage — official UWES-17 norms Table 33
+  // engage
   const mean = overallMean ?? 0;
   const b = uwesTotalBand(mean);
-  const norms = CERTIFIED_REFS.engage.primary.normsTotal;
-  const frameworkNote = `${CERTIFIED_REFS.engage.coreprintAlign} Band theo UWES Manual Table 33 (N=${norms.sampleN}, M=${norms.sampleMean}, SD=${norms.sampleSD}).`;
-  const protocolLabel = "UWES-17 structure · 0–6 · official percentile bands";
+  const frameworkNote =
+    "Bài Engage đo mức gắn kết – năng lượng với công việc gần đây (thang 0–6). Phân hạng tham chiếu mẫu chuẩn quốc tế — dùng để định hướng, không xếp hạng cứng nhân sự.";
+  const protocolLabel = "17 câu · thang 0–6 · ba trụ năng lượng";
 
   return {
     band: b.key,
-    bandLabel: `UWES Total: ${b.labelVi} (${b.labelEn})`,
-    displayScore: `Mean ${mean.toFixed(2)}/6`,
+    bandLabel: `Mức gắn kết: ${b.labelVi}`,
+    displayScore: `${mean.toFixed(2)}/6`,
     frameworkNote,
     protocolLabel,
-    summary: `Điểm tổng mean ${mean.toFixed(2)}/6 → hạng «${b.labelEn}» theo norms UWES-17 (mẫu chuẩn manual, không phải mẫu VN). Mẫu tham chiếu M≈${norms.sampleMean}. Ba trụ Vigor / Dedication / Absorption đọc riêng như manual.`,
+    summary: `Điểm trung bình tổng ${mean.toFixed(2)}/6 — mức «${b.labelVi}». Xem riêng ba trụ sức sống, gắn kết và tập trung bên dưới để biết nên điều chỉnh phần nào trước.`,
     insights: [
-      `Trụ mạnh: ${strongL}${strong[0]?.mean != null ? ` (M=${strong[0].mean})` : ""}.`,
-      `Trụ thấp: ${weakL}${weak[0]?.mean != null ? ` (M=${weak[0].mean})` : ""}.`,
-      "Very low/Low trên Total gợi ý disengagement — đối cực burnout (exhaustion/cynicism) trong JD-R model.",
-      "Norms từ manual châu Âu/đa quốc gia; VN có thể lệch văn hóa — dùng để định hướng + tư vấn, không HR ranking cứng.",
+      `Trụ mạnh: ${strongL}${strong[0]?.mean != null ? ` (TB ${strong[0].mean})` : ""}.`,
+      `Trụ thấp: ${weakL}${weak[0]?.mean != null ? ` (TB ${weak[0].mean})` : ""}.`,
+      "Mức thấp trên tổng điểm có thể gợi ý đang xa rời công việc — nên xem cùng dấu hiệu mệt mỏi hoặc quá tải.",
+      "Mẫu tham chiếu mang tính quốc tế; dùng để định hướng và tư vấn, không áp cứng vào xếp hạng nội bộ.",
     ],
     growthTips: [
-      "Vigor thấp → ngủ, workload, recovery.",
-      "Dedication thấp → job crafting / ý nghĩa / values fit.",
-      "Absorption thấp → deep work, giảm interruption.",
-      "Tư vấn 90 ngày bám đúng trụ thấp nhất theo UWES.",
+      "Sức sống thấp: ngủ đủ, giảm tải, khôi phục sau giờ làm.",
+      "Gắn kết thấp: làm rõ ý nghĩa công việc, điều chỉnh nhiệm vụ cho khớp giá trị.",
+      "Tập trung thấp: khối thời gian sâu, giảm gián đoạn.",
+      "Trong 90 ngày: ưu tiên đúng trụ thấp nhất trước.",
     ],
   };
 }

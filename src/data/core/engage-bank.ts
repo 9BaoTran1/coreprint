@@ -148,9 +148,9 @@ export const ENGAGE_QUESTIONS: Question[] = [
 ];
 
 export const ENGAGE_DIMENSIONS: Record<string, string> = {
-  vigor: "UWES · Vigor (6 items) — Năng lượng & bền bỉ",
-  dedication: "UWES · Dedication (5 items) — Ý nghĩa & tự hào",
-  absorption: "UWES · Absorption (6 items) — Hòa mình & flow",
+  vigor: "Sức sống & bền bỉ",
+  dedication: "Gắn kết & ý nghĩa công việc",
+  absorption: "Tập trung & hòa mình vào việc",
 };
 
 /** Structure audit: must be 6+5+6 */

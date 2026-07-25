@@ -16,7 +16,7 @@ type ConsultCtaProps = {
  * External link, opens new tab.
  */
 export function ConsultCta({
-  label = "Đặt lịch tư vấn CRT",
+  label = "Đặt tư vấn CRT",
   className,
   variant = "primary",
   showIcon = true,
@@ -39,7 +39,7 @@ export function ConsultCta({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(base, className)}
-      title="Mở form CRT tư vấn (Tally)"
+      title="Mở form đăng ký tư vấn CRT"
     >
       {showIcon && variant !== "link" && <MessageCircle className="h-4 w-4" />}
       {label}

@@ -399,17 +399,17 @@ export const EQ_QUESTIONS: Question[] = [
 ];
 
 export const EQ_DIMENSIONS: Record<string, string> = {
-  perceiving: "MSCEIT Branch 1 · Perceiving Emotions",
-  facilitating: "MSCEIT Branch 2 · Facilitating Thought",
-  understanding: "MSCEIT Branch 3 · Understanding Emotions",
-  managing: "MSCEIT Branch 4 · Managing Emotions",
+  perceiving: "Nhận biết cảm xúc",
+  facilitating: "Dùng cảm xúc hỗ trợ suy nghĩ & việc",
+  understanding: "Hiểu cảm xúc và chuỗi cảm xúc",
+  managing: "Điều tiết cảm xúc & quan hệ",
 };
 
 export const EQ_TO_ESCI: Record<string, string> = {
-  perceiving: "ESCI · Self-awareness + Social awareness (đọc tín hiệu)",
-  facilitating: "ESCI · Self-management (dùng cảm xúc cho performance)",
-  understanding: "ESCI · Empathy / Social awareness (hiểu sâu)",
-  managing: "ESCI · Relationship management (influence, conflict, coach)",
+  perceiving: "Tự nhận thức & đọc tín hiệu xã hội",
+  facilitating: "Tự quản lý — dùng cảm xúc để làm việc hiệu quả",
+  understanding: "Thấu cảm & hiểu bối cảnh cảm xúc",
+  managing: "Quản lý quan hệ — ảnh hưởng, xung đột, hỗ trợ người khác",
 };
 
 /** Audit: max points per item must be 2; unique best option */

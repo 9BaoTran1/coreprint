@@ -1,5 +1,4 @@
 import type { TestProtocol, TestType } from "./types";
-import { CERTIFIED_REFS } from "./standards/certified-refs";
 
 export const PROTOCOLS: Record<TestType, TestProtocol> = {
   iq: {
@@ -8,19 +7,19 @@ export const PROTOCOLS: Record<TestType, TestProtocol> = {
     itemPointMax: 1,
     allowBack: true,
     estimatedMinutes: "20–25",
-    standardizationNote: CERTIFIED_REFS.iq.coreprintAlign,
+    standardizationNote:
+      "Bài đo tư duy của CorePrint gồm 34 câu, có giới hạn 25 phút. Kết quả chia theo ngôn ngữ, suy luận và trí nhớ làm việc — mang tính định hướng, không thay đánh giá lâm sàng chính thức.",
     instructions: [
-      "CORE battery 34 câu · 3 index WAIS-IV-aligned: VCI (12) · PRI (12) · WMI (10).",
-      "PRI gồm series + matrix số (quy tắc Raven-style: progression, row product/sum) — item text original.",
-      "VCI: similarities, analogy, classification, formal verbal logic (như Similarities/Comprehension).",
-      "WMI: arithmetic + digit-hold + sequencing (như Arithmetic/Digit Span thao tác).",
-      "Mỗi câu MỘT đáp án đúng; trọng số 1 / 1.5 / 2 theo độ khó. Giới hạn 25 phút.",
-      "Yên tĩnh, không máy tính/AI/tra cứu. KHÔNG phải WAIS clinical Pearson.",
+      "Có 34 câu, chia ba nhóm: hiểu ngôn ngữ, suy luận logic, và giữ – xử lý thông tin.",
+      "Mỗi câu chỉ có một đáp án đúng. Một số câu khó hơn sẽ được tính trọng số cao hơn.",
+      "Bạn có tối đa 25 phút. Hết giờ hệ thống sẽ nộp phần đã trả lời.",
+      "Nên ngồi yên tĩnh, một mình, không dùng máy tính, AI hay tra cứu.",
+      "Có thể quay lại câu trước nếu còn thời gian.",
     ],
     rules: [
-      "Không nhờ người / không tra cứu — kết quả mới dùng được cho tư vấn",
-      "Làm hết sức trong 25’; hết giờ tự nộp phần đã trả lời",
-      "Cần FSIQ lâm sàng → WAIS với chuyên gia đủ điều kiện",
+      "Không nhờ người khác hoặc tra cứu — kết quả mới đáng tin để tư vấn",
+      "Làm hết sức trong 25 phút; chưa kịp làm cũng không sao",
+      "Cần đánh giá lâm sàng chính thức: gặp chuyên gia có chứng chỉ phù hợp",
     ],
   },
   eq: {
@@ -29,18 +28,19 @@ export const PROTOCOLS: Record<TestType, TestProtocol> = {
     itemPointMax: 2,
     allowBack: true,
     estimatedMinutes: "15–20",
-    standardizationNote: CERTIFIED_REFS.eq.coreprintAlign,
+    standardizationNote:
+      "Bài EQ gồm 20 tình huống thực tế. Bạn chọn cách ứng xử phù hợp; điểm phản ánh mức độ hiệu quả của hành vi cảm xúc – xã hội, không phải “tính cách bạn thích”.",
     instructions: [
-      "CORE 20 tình huống · đúng 4 nhánh MSCEIT (mỗi nhánh 5 câu): Perceiving · Facilitating · Understanding · Managing.",
-      "Ability model: có đáp án tốt hơn/kém hơn (không phải «bạn thích gì»).",
-      "Chấm partial credit 0/1/2 theo khóa chuyên gia EI + leadership (SJT best practice).",
-      "Perceiving = đọc tín hiệu · Facilitating = ghép mood–task · Understanding = chuỗi/blend · Managing = điều tiết.",
-      "Map sang ESCI (Korn Ferry/Goleman) trên báo cáo. Khác EQ-i 2.0 trait Level B.",
+      "Đọc kỹ từng tình huống trước khi chọn đáp án.",
+      "Chọn hành vi bạn sẽ làm (hoặc nên làm) để xử lý hiệu quả, không tô hồng cho “đẹp”.",
+      "Bốn nhóm năng lực: nhận biết cảm xúc, dùng cảm xúc hỗ trợ việc, hiểu chuỗi cảm xúc, và điều tiết cảm xúc.",
+      "Một số đáp án tốt hơn đáp án khác — không phải mọi lựa chọn ngang nhau.",
+      "Có thể quay lại câu trước để chỉnh nếu cần.",
     ],
     rules: [
-      "Chọn hành vi bạn sẽ làm / nên làm theo EI hiệu quả — không tô hồng vô căn",
-      "Đọc đủ tình huống trước khi chọn",
-      "MSCEIT/ESCI/EQ-i official chỉ qua license + người có cert",
+      "Trả lời trung thực theo cách bạn thường xử lý (hoặc cách hiệu quả nhất bạn tin)",
+      "Đọc hết tình huống trước khi chọn",
+      "Kết quả dùng cho phát triển & tư vấn, không thay bài đo chính thức có bản quyền",
     ],
   },
   engage: {
@@ -50,18 +50,19 @@ export const PROTOCOLS: Record<TestType, TestProtocol> = {
     likertMax: 6,
     allowBack: true,
     estimatedMinutes: "6–10",
-    standardizationNote: CERTIFIED_REFS.engage.coreprintAlign,
+    standardizationNote:
+      "Bài Engage gồm 17 câu về cảm nhận công việc gần đây (khoảng 3–6 tháng). Thang điểm từ “không bao giờ” đến “luôn luôn”.",
     instructions: [
-      "CORE đúng cấu trúc UWES-17: Vigor 6 + Dedication 5 + Absorption 6 = 17 câu.",
-      "Thang 0–6 (Never → Always) — scale nghiên cứu engagement chuẩn.",
-      "Chấm mean = tổng/số item từng trụ và tổng (UWES Manual).",
-      "Hạng Very low→Very high theo Table 33 (N=2,313). Mẫu M≈3.82.",
-      "Nghĩ vai trò công việc chính 3–6 tháng gần đây. Item map construct UWES, wording tiếng Việt adapted.",
+      "Nghĩ về vai trò công việc chính trong 3–6 tháng gần đây.",
+      "Có 17 câu thuộc ba nhóm: sức sống, sự gắn kết, và mức tập trung / chìm đắm trong việc.",
+      "Chọn mức độ từ 0 (không bao giờ) đến 6 (luôn luôn) cho mỗi câu.",
+      "Không có đáp án đúng – sai; trung thực giúp nhận diện năng lượng thật.",
+      "Có thể quay lại chỉnh câu trước.",
     ],
     rules: [
-      "Trung thực — tô hồng che burnout/disengage",
-      "Nếu nghỉ việc: công việc gần nhất ≥ 3 tháng",
-      "Không reverse-score (đúng UWES-17 positive-keyed)",
+      "Trung thực — tô hồng sẽ che dấu dấu hiệu mệt mỏi hoặc mất động lực",
+      "Nếu đang nghỉ việc: hãy nghĩ về công việc gần nhất kéo dài từ 3 tháng trở lên",
+      "Kết quả mang tính định hướng sức khỏe nghề nghiệp, không thay tư vấn y tế",
     ],
   },
 };

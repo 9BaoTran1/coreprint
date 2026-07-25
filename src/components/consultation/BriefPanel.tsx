@@ -23,10 +23,10 @@ export function BriefPanel({
     <div className="glass-card overflow-hidden">
       <div className="border-b border-line bg-ink px-6 py-5 text-white md:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">
-          Consultation brief · dùng được trong buổi 1:1
+          Tóm tắt tư vấn · dùng trong buổi 1:1
         </p>
         <h2 className="mt-2 font-display text-2xl font-semibold">
-          Hồ sơ định hướng tư vấn
+          Ưu tiên cần trao đổi
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-white/75">
           {brief.executiveSummary}
@@ -174,17 +174,17 @@ export function BriefPanel({
         )}
 
         <div className="rounded-2xl border border-teal/20 bg-teal-soft/30 px-4 py-3 text-xs leading-relaxed text-muted">
-          <p className="font-semibold text-ink">Mang vào form CRT / buổi 1:1</p>
+          <p className="font-semibold text-ink">Mang theo khi đăng ký / vào buổi 1:1</p>
           <ul className="mt-1.5 space-y-1">
-            <li>· Mã REF (sao chép từ trang kết quả) — dán vào ghi chú form Tally</li>
-            <li>· 1–2 ưu tiên trong brief bên trên</li>
-            <li>· Bối cảnh: việc / quan hệ / năng lượng bạn muốn đổi trong 90 ngày</li>
+            <li>· Mã REF (sao chép từ trang kết quả) — dán vào ghi chú form đăng ký</li>
+            <li>· 1–2 ưu tiên trong tóm tắt bên trên</li>
+            <li>· Bối cảnh: việc làm, quan hệ hoặc năng lượng bạn muốn cải thiện trong 90 ngày</li>
           </ul>
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <ConsultCta
-            label="Đặt CRT tư vấn với brief này"
+            label="Đặt tư vấn CRT với tóm tắt này"
             source="brief"
             className="flex-1"
           />
@@ -193,8 +193,8 @@ export function BriefPanel({
           </Link>
         </div>
         <p className="text-[11px] leading-relaxed text-muted">
-          Brief hỗ trợ coaching/career — không thay thế chẩn đoán tâm lý lâm sàng, tâm thần, hay
-          bài test có license (WAIS / MSCEIT / EQ-i / ESCI official).
+          Tóm tắt hỗ trợ định hướng nghề nghiệp và phát triển cá nhân — không thay chẩn đoán
+          tâm lý lâm sàng hay bài đo chính thức do chuyên gia thực hiện.
         </p>
       </div>
     </div>

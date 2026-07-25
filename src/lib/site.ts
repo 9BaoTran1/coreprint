@@ -6,13 +6,10 @@
  */
 export const SITE = {
   name: "CorePrint",
-  tagline: "IQ · EQ · Engage — tư vấn CRT có dữ liệu",
+  tagline: "Hiểu rõ ba trục: tư duy · cảm xúc · năng lượng",
   /** URL đang chạy (GitHub Pages) */
   liveUrl: "https://9baotran1.github.io/coreprint",
-  /**
-   * Domain production đề xuất (mua DNS rồi trỏ về Pages/Vercel).
-   * Không gắn CNAME trong repo cho đến khi DNS sẵn sàng — sẽ gãy github.io.
-   */
+  /** Domain production đề xuất — xem DOMAIN.md */
   preferredDomain: "coreprint.online",
   preferredUrl: "https://coreprint.online",
   domainAlternatives: [
@@ -21,14 +18,12 @@ export const SITE = {
     "tuvancrt.vn",
     "crtonline.vn",
   ] as const,
-  /** Email brand — cập nhật mailbox thật khi có domain */
   email: "hello@coreprint.online",
-  /** null = ẩn nút gọi (chưa có SĐT thật) */
   phone: null as string | null,
   phoneDisplay: null as string | null,
   locale: "vi_VN",
   defaultDescription:
-    "Trắc nghiệm IQ, EQ và Engage tiếng Việt cho người 25+. Nhận báo cáo + brief, đăng ký tư vấn CRT 1:1 có dữ liệu.",
+    "Đo IQ, EQ và mức gắn kết công việc bằng tiếng Việt. Nhận báo cáo rõ ràng và đặt tư vấn CRT 1:1 có dữ liệu — dành cho người 25+.",
 } as const;
 
 /** metadataBase / canonical — override bằng NEXT_PUBLIC_SITE_URL khi gắn domain */
