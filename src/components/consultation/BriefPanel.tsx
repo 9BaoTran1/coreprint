@@ -173,6 +173,15 @@ export function BriefPanel({
           </div>
         )}
 
+        <div className="rounded-2xl border border-teal/20 bg-teal-soft/30 px-4 py-3 text-xs leading-relaxed text-muted">
+          <p className="font-semibold text-ink">Mang vào form CRT / buổi 1:1</p>
+          <ul className="mt-1.5 space-y-1">
+            <li>· Mã REF (sao chép từ trang kết quả) — dán vào ghi chú form Tally</li>
+            <li>· 1–2 ưu tiên trong brief bên trên</li>
+            <li>· Bối cảnh: việc / quan hệ / năng lượng bạn muốn đổi trong 90 ngày</li>
+          </ul>
+        </div>
+
         <div className="flex flex-col gap-3 sm:flex-row">
           <ConsultCta
             label="Đặt CRT tư vấn với brief này"

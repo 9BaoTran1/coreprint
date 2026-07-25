@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
+  Copy,
   Download,
   FileText,
   RefreshCw,
   Share2,
 } from "lucide-react";
+import { CRT_CONSULT_URL } from "@/lib/constants";
 import type { TestResult, TestType } from "@/lib/types";
 import { TESTS, TEST_LIST } from "@/lib/tests-meta";
 import { loadAllResults, loadResult } from "@/lib/storage";
@@ -21,11 +23,35 @@ import { BriefPanel } from "@/components/consultation/BriefPanel";
 import { ConsultCta } from "@/components/consultation/ConsultCta";
 import { TestIcon } from "@/components/TestIcon";
 
+async function copyText(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return;
+  } catch {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    const copied = document.execCommand("copy");
+    textarea.remove();
+
+    if (!copied) {
+      throw new Error("Copy command failed");
+    }
+  }
+}
+
 export function ResultView({ type }: { type: TestType }) {
   const meta = TESTS[type];
   const [result, setResult] = useState<TestResult | null>(null);
   const [brief, setBrief] = useState<ConsultBrief | null>(null);
   const [ready, setReady] = useState(false);
+  const [copied, setCopied] = useState<"ref" | "summary" | null>(null);
+  const copyResetTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const r = loadResult(type);
@@ -37,6 +63,12 @@ export function ResultView({ type }: { type: TestType }) {
       setBrief(b);
     }
     setReady(true);
+
+    return () => {
+      if (copyResetTimer.current) {
+        window.clearTimeout(copyResetTimer.current);
+      }
+    };
   }, [type]);
 
   if (!ready) {
@@ -62,6 +94,19 @@ export function ResultView({ type }: { type: TestType }) {
   }
 
   const others = TEST_LIST.filter((t) => t.type !== type);
+  const ref = `${type.toUpperCase()}-${result.percent}-${result.band}`;
+  const summary = `${result.bandLabel} · ${result.displayScore}\nREF: ${ref}\nTư vấn CRT: ${CRT_CONSULT_URL}`;
+
+  const handleCopy = async (value: string, target: "ref" | "summary") => {
+    await copyText(value);
+    setCopied(target);
+    if (copyResetTimer.current) {
+      window.clearTimeout(copyResetTimer.current);
+    }
+    copyResetTimer.current = window.setTimeout(() => {
+      setCopied((current) => (current === target ? null : current));
+    }, 2000);
+  };
 
   return (
     <div className="container-page py-10 md:py-14">
@@ -228,9 +273,30 @@ export function ResultView({ type }: { type: TestType }) {
                 <Download className="h-3 w-3" /> Chụp màn hình REF khi tư vấn.
               </span>
             </p>
-            <p className="mt-2 font-mono text-[11px] text-ink/70">
-              REF: {type.toUpperCase()}-{result.percent}-{result.band}
+            <p className="mt-3 font-mono text-[11px] text-ink/70">
+              REF: {ref}
             </p>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+              <button
+                type="button"
+                className="btn-secondary w-full !px-3 !py-2 text-xs"
+                onClick={() => void handleCopy(ref, "ref")}
+              >
+                <Copy className="h-3.5 w-3.5" />
+                {copied === "ref" ? "Đã sao chép" : "Sao chép REF"}
+              </button>
+              <button
+                type="button"
+                className="btn-secondary w-full !px-3 !py-2 text-xs"
+                onClick={() => void handleCopy(summary, "summary")}
+              >
+                <Copy className="h-3.5 w-3.5" />
+                {copied === "summary" ? "Đã sao chép" : "Sao chép tóm tắt"}
+              </button>
+            </div>
+            <span className="sr-only" aria-live="polite">
+              {copied ? "Đã sao chép vào bộ nhớ tạm" : ""}
+            </span>
           </div>
         </aside>
       </div>

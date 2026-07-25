@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Fraunces } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { MobileStickyCta } from "@/components/MobileStickyCta";
 import { BRAND } from "@/lib/tests-meta";
 import "./globals.css";
 
@@ -49,8 +50,9 @@ export default function RootLayout({
     <html lang="vi" className={`${body.variable} ${display.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-20 md:pb-0">{children}</main>
         <Footer />
+        <MobileStickyCta />
       </body>
     </html>
   );

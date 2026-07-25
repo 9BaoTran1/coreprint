@@ -2,13 +2,26 @@ import type { Metadata } from "next";
 import { TallyEmbed } from "@/components/consultation/TallyEmbed";
 import { ConsultCta } from "@/components/consultation/ConsultCta";
 import { CRT_CONSULT_URL } from "@/lib/constants";
-import { CalendarDays, MessageSquareText, Shield, ExternalLink } from "lucide-react";
+import {
+  CalendarDays,
+  CheckSquare,
+  ExternalLink,
+  MessageSquareText,
+  Shield,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "CRT tư vấn — Đặt lịch",
   description:
     "Đặt lịch tư vấn CRT 1:1 dựa trên hồ sơ IQ · EQ · Engage — định hướng sự nghiệp, lãnh đạo và năng lượng cho người 25+.",
 };
+
+const prepChecklist = [
+  "Đã hoàn thành ít nhất 1 bài (IQ / EQ / Engage) — khuyến nghị đủ 3.",
+  "Sao chép hoặc chụp màn hình mã REF trên trang kết quả (vd. IQ-72-high).",
+  "Ghi 1–2 mục tiêu 90 ngày muốn bàn trong buổi CRT.",
+  "Dán REF + bối cảnh ngắn vào form Tally (ô ghi chú nếu có).",
+];
 
 export default function ContactPage() {
   return (
@@ -24,6 +37,23 @@ export default function ContactPage() {
             mang theo REF code hoặc chụp màn hình kết quả — buổi nói chuyện sẽ bám dữ liệu
             thay vì bắt đầu từ con số không.
           </p>
+
+          <div className="mt-6 rounded-2xl border border-teal/25 bg-teal-soft/40 p-5">
+            <p className="flex items-center gap-2 text-sm font-semibold text-ink">
+              <CheckSquare className="h-4 w-4 text-teal" />
+              Checklist trước khi gửi form
+            </p>
+            <ul className="mt-3 space-y-2.5">
+              {prepChecklist.map((item) => (
+                <li key={item} className="flex gap-2.5 text-sm leading-relaxed text-muted">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md border border-teal/30 bg-white text-[11px] font-bold text-teal">
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="mt-8 space-y-4">
             {[

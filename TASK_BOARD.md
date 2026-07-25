@@ -12,17 +12,17 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 |----|------|-------|--------|------|
 | A1 | Static export + GH Actions Pages | Grok | done | workflow `.github/workflows/deploy-pages.yml` |
 | A2 | Push repo `9BaoTran1/coreprint` | Grok | done | public |
-| A3 | Verify URL live + smoke click CRT | Grok | claimed:Grok | https://9baotran1.github.io/coreprint/ |
-| A4 | Copy link rải (landing + Tally) | Grok | todo | short message Zalo/FB |
+| A3 | Verify URL live + smoke click CRT | Grok | done | 200 OK home / lien-he / test/iq |
+| A4 | Copy link rải (landing + Tally) | Grok | done | xem SHARE_COPY.md |
 | A5 | (Optional) custom domain | — | todo | không bắt buộc free |
 
 ## Track B — Sản phẩm / UX (Codex lead, Antigravity review UI)
 
 | ID | Task | Owner | Status | Paths an toàn |
 |----|------|-------|--------|----------------|
-| B1 | Mobile polish Header + CTA sticky | Codex | todo | `Header.tsx`, `CtaSection.tsx` |
-| B2 | Loading/empty states quiz mượt hơn | Codex | todo | `QuizEngine.tsx` |
-| B3 | Trang kết quả: nút share kết quả (copy REF) | Codex | todo | `ResultView.tsx` |
+| B1 | Mobile polish Header + CTA sticky | Grok | done | Sticky bottom CTA + header mobile lock-scroll |
+| B2 | Loading/empty states quiz mượt hơn | Codex | claimed:Codex | `QuizEngine.tsx` |
+| B3 | Trang kết quả: nút share kết quả (copy REF) | Codex | done | Thêm sao chép REF/tóm tắt, có fallback clipboard và phản hồi 2 giây. |
 | B4 | Visual polish Antigravity (spacing/type) | Antigravity | todo | `globals.css`, landing/* |
 | B5 | SEO meta + OG image đơn giản | Codex | todo | `layout.tsx`, `public/` |
 
@@ -31,7 +31,7 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 | ID | Task | Owner | Status | Paths |
 |----|------|-------|--------|-------|
 | C1 | Copy tiếng Việt gọn cho 25+ | Antigravity | todo | landing Hero/Why/Cta |
-| C2 | Checklist mang REF vào form Tally | Grok | todo | `lien-he`, BriefPanel |
+| C2 | Checklist mang REF vào form Tally | Grok | done | checklist /lien-he + tip trên BriefPanel |
 | C3 | SĐT/email thật (thay placeholder) | User | blocked | Footer, CtaSection |
 
 ## Track D — Chất lượng (Codex)
@@ -40,7 +40,7 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 |----|------|-------|--------|
 | D1 | `codex review` sau mỗi PR nhỏ | Codex | todo |
 | D2 | Mở rộng `scripts/smoke-score.ts` | Codex | todo |
-| D3 | Kiểm tra basePath `/coreprint` không gãy link | Grok | claimed:Grok |
+| D3 | Kiểm tra basePath `/coreprint` không gãy link | Grok | done | routes 200 với prefix /coreprint/ |
 
 ---
 
