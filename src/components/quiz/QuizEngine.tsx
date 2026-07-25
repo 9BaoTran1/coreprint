@@ -33,13 +33,15 @@ function formatTime(sec: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
+type QuizPhase = "intro" | "starting" | "quiz";
+
 export function QuizEngine({ type }: { type: TestType }) {
   const meta = TESTS[type];
   const protocol = PROTOCOLS[type];
   const questions = useMemo(() => getQuestionBank(type), [type]);
   const router = useRouter();
 
-  const [phase, setPhase] = useState<"intro" | "quiz">("intro");
+  const [phase, setPhase] = useState<QuizPhase>("intro");
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [submitting, setSubmitting] = useState(false);
@@ -51,13 +53,19 @@ export function QuizEngine({ type }: { type: TestType }) {
   const answersRef = useRef(answers);
   const elapsedRef = useRef(0);
   const finishingRef = useRef(false);
-  answersRef.current = answers;
 
   const q = questions[index];
   const answeredCount = Object.keys(answers).length;
   const selected = q ? answers[q.id] : undefined;
-  const isLast = index === questions.length - 1;
-  const progress = Math.round(((index + 1) / questions.length) * 100);
+  const isLast = questions.length > 0 && index === questions.length - 1;
+  const progress =
+    questions.length > 0
+      ? Math.min(100, Math.round(((index + 1) / questions.length) * 100))
+      : 0;
+
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
 
   const finish = useCallback(
     (finalAnswers: AnswerMap, timed = false, timeUsed?: number) => {
@@ -107,6 +115,23 @@ export function QuizEngine({ type }: { type: TestType }) {
     return () => window.clearInterval(id);
   }, [phase, protocol.timeLimitSeconds]);
 
+  useEffect(() => {
+    if (phase !== "starting") return;
+    const id = window.setTimeout(() => setPhase("quiz"), 350);
+    return () => window.clearTimeout(id);
+  }, [phase]);
+
+  function startQuiz() {
+    setIndex(0);
+    setAnswers({});
+    setSecondsLeft(protocol.timeLimitSeconds);
+    setElapsed(0);
+    setTimedOut(false);
+    elapsedRef.current = 0;
+    finishingRef.current = false;
+    setPhase("starting");
+  }
+
   function selectOption(optionId: string) {
     if (!q) return;
     setAnswers((prev) => ({ ...prev, [q.id]: optionId }));
@@ -152,8 +177,10 @@ export function QuizEngine({ type }: { type: TestType }) {
           <div className="grid gap-3 sm:grid-cols-3">
             <div className="rounded-xl border border-line bg-white px-3 py-3 text-center">
               <ListChecks className="mx-auto h-4 w-4 text-accent" />
-              <p className="mt-1 font-semibold text-ink">{questions.length} câu</p>
-              <p className="text-[11px] text-muted">Toàn battery</p>
+              <p className="mt-1 font-semibold text-ink">
+                {questions.length > 0 ? `${questions.length} câu` : "Đang chuẩn bị"}
+              </p>
+              <p className="text-[11px] text-muted">Toàn bộ câu hỏi</p>
             </div>
             <div className="rounded-xl border border-line bg-white px-3 py-3 text-center">
               <Clock className="mx-auto h-4 w-4 text-accent" />
@@ -163,7 +190,7 @@ export function QuizEngine({ type }: { type: TestType }) {
                   : protocol.estimatedMinutes + "’"}
               </p>
               <p className="text-[11px] text-muted">
-                {protocol.timeLimitSeconds ? "Giới hạn giờ" : "Ước lượng"}
+                {protocol.timeLimitSeconds ? "Thời gian tối đa" : "Thời gian ước tính"}
               </p>
             </div>
             <div className="rounded-xl border border-line bg-white px-3 py-3 text-center">
@@ -216,11 +243,7 @@ export function QuizEngine({ type }: { type: TestType }) {
             type="button"
             className="btn-primary w-full"
             style={{ background: meta.color }}
-            onClick={() => {
-              setPhase("quiz");
-              setSecondsLeft(protocol.timeLimitSeconds);
-              setElapsed(0);
-            }}
+            onClick={startQuiz}
           >
             Tôi hiểu — Bắt đầu làm bài
             <ArrowRight className="h-4 w-4" />
@@ -230,7 +253,77 @@ export function QuizEngine({ type }: { type: TestType }) {
     );
   }
 
-  if (!q) return null;
+  if (phase === "starting") {
+    return (
+      <div
+        className="container-page max-w-3xl py-10 md:py-14"
+        aria-busy="true"
+        aria-live="polite"
+      >
+        <div className="animate-pulse">
+          <div className="mb-8 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span
+                className="grid h-10 w-10 place-items-center rounded-xl text-white"
+                style={{ background: meta.color }}
+              >
+                <TestIcon icon={meta.icon} className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-medium text-ink">Đang chuẩn bị bài đánh giá…</p>
+                <p className="mt-1 text-xs text-muted">Giữ tập trung, câu hỏi đầu tiên sắp hiện ra.</p>
+              </div>
+            </div>
+            <div className="h-8 w-16 rounded-full bg-line/70" />
+          </div>
+          <div className="progress-track mb-8">
+            <div className="progress-fill w-1/4 opacity-50" />
+          </div>
+          <div className="glass-card space-y-5 p-6 md:p-8">
+            <div className="h-3 w-28 rounded-full bg-line/70" />
+            <div className="h-7 w-4/5 rounded-lg bg-line/70" />
+            <div className="space-y-3 pt-2">
+              {[0, 1, 2].map((item) => (
+                <div key={item} className="h-14 rounded-xl border border-line bg-white/70" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!q) {
+    return (
+      <div className="container-page max-w-2xl py-10 md:py-14">
+        <div className="glass-card p-6 text-center md:p-8" role="status">
+          <span
+            className="mx-auto grid h-12 w-12 place-items-center rounded-xl text-white"
+            style={{ background: meta.color }}
+          >
+            <ListChecks className="h-5 w-5" />
+          </span>
+          <h1 className="mt-4 font-display text-2xl font-semibold text-ink">
+            Chưa thể tải câu hỏi
+          </h1>
+          <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
+            Bộ câu hỏi hiện chưa sẵn sàng. Bạn có thể thử khởi động lại hoặc chọn
+            một bài đánh giá khác.
+          </p>
+          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <button type="button" className="btn-secondary" onClick={() => setPhase("intro")}>
+              <ArrowLeft className="h-4 w-4" />
+              Quay lại hướng dẫn
+            </button>
+            <button type="button" className="btn-primary" onClick={() => router.push("/ho-so")}>
+              Chọn bài đánh giá khác
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const timerUrgent =
     secondsLeft != null && secondsLeft <= 60 && secondsLeft > 0;
@@ -282,7 +375,7 @@ export function QuizEngine({ type }: { type: TestType }) {
       <div className="progress-track mb-8">
         <div
           className="progress-fill"
-          style={{ width: `${((index + 1) / questions.length) * 100}%` }}
+          style={{ width: `${progress}%` }}
         />
       </div>
 

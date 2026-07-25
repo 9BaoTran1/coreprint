@@ -21,7 +21,7 @@ Cập nhật status: `todo` | `claimed:Grok|Codex|Antigravity` | `done` | `block
 | ID | Task | Owner | Status | Paths an toàn |
 |----|------|-------|--------|----------------|
 | B1 | Mobile polish Header + CTA sticky | Grok | done | Sticky bottom CTA + header mobile lock-scroll |
-| B2 | Loading/empty states quiz mượt hơn | Codex | claimed:Codex | `QuizEngine.tsx` |
+| B2 | Loading/empty states quiz mượt hơn | Codex | done | Thêm màn khởi động pulse, fallback khi thiếu câu hỏi và tiến độ an toàn. |
 | B3 | Trang kết quả: nút share kết quả (copy REF) | Codex | done | Thêm sao chép REF/tóm tắt, có fallback clipboard và phản hồi 2 giây. |
 | B4 | Visual polish Antigravity (spacing/type) | Antigravity | todo | `globals.css`, landing/* |
 | B5 | SEO meta + OG image đơn giản | Codex | todo | `layout.tsx`, `public/` |
