@@ -11,12 +11,12 @@ export function Footer() {
           <p className="font-display text-2xl font-semibold text-ink">{BRAND.name}</p>
           <p className="mt-1 text-sm font-medium text-ink/80">{SITE.tagline}</p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
-            Ba bài đo miễn phí (IQ · EQ · Engage) kèm báo cáo và tóm tắt ưu tiên. Đặt tư
-            vấn CRT khi bạn sẵn sàng chốt hành động 90 ngày.
+            Ba bài miễn phí giúp bạn hiểu khả năng tư duy, cách xử lý cảm xúc và mức
+            năng lượng trong công việc. Đăng ký tư vấn CRT khi bạn muốn lập kế hoạch 90 ngày.
           </p>
           <p className="mt-4 text-xs leading-relaxed text-muted">
-            Kết quả mang tính định hướng phát triển, không thay thế đánh giá lâm sàng
-            hay bài đo chính thức có bản quyền.
+            Kết quả chỉ hỗ trợ định hướng phát triển. Đây không phải chẩn đoán sức khỏe
+            tâm lý và không thay thế bài đánh giá chuyên sâu do chuyên gia thực hiện.
           </p>
         </div>
         <div>
@@ -69,7 +69,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="hover:text-ink"
               >
-                Form đăng ký tư vấn
+                Biểu mẫu đăng ký tư vấn
               </a>
             </li>
             <li>

@@ -40,11 +40,12 @@ export default function ProfilePage() {
       <div className="max-w-2xl">
         <span className="section-label">Hồ sơ của bạn</span>
         <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-          Tổng hợp ba trục — nền cho tư vấn CRT
+          Kết quả tổng hợp để chuẩn bị tư vấn CRT
         </h1>
         <p className="mt-3 text-muted leading-relaxed">
-          Xem nhanh kết quả IQ · EQ · Engage đã làm trên thiết bị này. Phần tóm tắt bên dưới
-          giúp buổi tư vấn 1:1 đi thẳng vào ưu tiên, không bắt đầu từ con số không.
+          Xem các bài bạn đã hoàn thành trên thiết bị này: tư duy (IQ), cảm xúc (EQ) và
+          năng lượng công việc (Engage). Phần tóm tắt giúp buổi tư vấn 1:1 tập trung
+          ngay vào điều quan trọng với bạn.
         </p>
       </div>
 
@@ -80,7 +81,7 @@ export default function ProfilePage() {
                 </>
               ) : (
                 <>
-                  <p className="mt-4 text-sm text-muted">Chưa đo</p>
+                  <p className="mt-4 text-sm text-muted">Chưa làm</p>
                   <Link href={`/test/${t.type}`} className="btn-primary mt-3 !py-2 text-sm">
                     Làm {t.shortName}
                   </Link>

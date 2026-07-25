@@ -199,8 +199,8 @@ export function QuizEngine({ type }: { type: TestType }) {
                 {protocol.format === "binary"
                   ? "Một đáp án đúng"
                   : protocol.format === "sjt"
-                    ? "Tình huống"
-                    : "Thang mức độ"}
+                    ? "Chọn cách ứng xử"
+                    : "Chọn mức thường xuyên"}
               </p>
               <p className="text-[11px] text-muted">Dạng câu hỏi</p>
             </div>
@@ -245,7 +245,7 @@ export function QuizEngine({ type }: { type: TestType }) {
             style={{ background: meta.color }}
             onClick={startQuiz}
           >
-            Tôi hiểu — Bắt đầu làm bài
+            Tôi đã hiểu — Bắt đầu
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>
@@ -270,8 +270,8 @@ export function QuizEngine({ type }: { type: TestType }) {
                 <TestIcon icon={meta.icon} className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-sm font-medium text-ink">Đang chuẩn bị bài đánh giá…</p>
-                <p className="mt-1 text-xs text-muted">Giữ tập trung, câu hỏi đầu tiên sắp hiện ra.</p>
+                <p className="text-sm font-medium text-ink">Đang chuẩn bị bài…</p>
+                <p className="mt-1 text-xs text-muted">Câu hỏi đầu tiên sắp hiện ra.</p>
               </div>
             </div>
             <div className="h-8 w-16 rounded-full bg-line/70" />
@@ -308,7 +308,7 @@ export function QuizEngine({ type }: { type: TestType }) {
           </h1>
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
             Bộ câu hỏi hiện chưa sẵn sàng. Bạn có thể thử khởi động lại hoặc chọn
-            một bài đánh giá khác.
+            một bài khác.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <button type="button" className="btn-secondary" onClick={() => setPhase("intro")}>
@@ -316,7 +316,7 @@ export function QuizEngine({ type }: { type: TestType }) {
               Quay lại hướng dẫn
             </button>
             <button type="button" className="btn-primary" onClick={() => router.push("/ho-so")}>
-              Chọn bài đánh giá khác
+              Chọn bài khác
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -384,8 +384,8 @@ export function QuizEngine({ type }: { type: TestType }) {
           {q.dimension
             ? DIM_LABELS[type][q.dimension] ?? q.dimension
             : "Câu hỏi"}
-          {protocol.format === "sjt" && " · Situational Judgment"}
-          {protocol.format === "likert" && " · Thang tần suất 0–6"}
+          {protocol.format === "sjt" && " · Câu hỏi tình huống"}
+          {protocol.format === "likert" && " · Mức độ thường xuyên từ 0 đến 6"}
         </p>
 
         {q.scenario && (

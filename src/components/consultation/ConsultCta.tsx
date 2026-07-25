@@ -39,7 +39,7 @@ export function ConsultCta({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(base, className)}
-      title="Mở form đăng ký tư vấn CRT"
+      title="Mở biểu mẫu đăng ký tư vấn CRT"
     >
       {showIcon && variant !== "link" && <MessageCircle className="h-4 w-4" />}
       {label}

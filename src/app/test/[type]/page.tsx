@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { type } = await params;
   const meta = TESTS[type as TestType];
-  if (!meta) return { title: "Bài test" };
+  if (!meta) return { title: "Bài đánh giá" };
   return {
     title: meta.name,
     description: meta.description,

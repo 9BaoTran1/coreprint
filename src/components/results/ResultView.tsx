@@ -84,7 +84,7 @@ export function ResultView({ type }: { type: TestType }) {
           Chưa có kết quả {meta.shortName}
         </h1>
         <p className="mt-2 text-muted">
-          Bạn chưa hoàn thành assessment này trên thiết bị hiện tại (điều kiện đo nghiêm túc).
+          Bạn chưa hoàn thành bài này trên thiết bị hiện tại.
         </p>
         <Link href={`/test/${type}`} className="btn-primary mt-6 inline-flex">
           Bắt đầu {meta.shortName}
@@ -111,8 +111,8 @@ export function ResultView({ type }: { type: TestType }) {
   return (
     <div className="container-page py-10 md:py-14">
       <div className="mb-6 rounded-2xl border border-teal/25 bg-teal-soft/50 px-4 py-3 text-sm text-ink">
-        <strong>Báo cáo định hướng — không phải quiz giải trí.</strong> Kết quả và tóm tắt bên
-        dưới dùng để mở buổi tư vấn. Xem thêm{" "}
+        <strong>Kết quả này dùng để định hướng phát triển.</strong> Bạn có thể dùng phần
+        tóm tắt bên dưới khi trao đổi với người tư vấn. Xem thêm về{" "}
         <Link href="/phuong-phap" className="font-semibold underline">
           phương pháp đo
         </Link>
@@ -136,7 +136,7 @@ export function ResultView({ type }: { type: TestType }) {
                   <span className="font-display text-2xl font-semibold md:text-3xl">
                     {result.displayScore}
                   </span>
-                  <span className="text-xs text-white/70">điểm hồ sơ</span>
+                  <span className="text-xs text-white/70">điểm tham khảo</span>
                 </div>
                 {result.protocolLabel && (
                   <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/80">
@@ -157,7 +157,7 @@ export function ResultView({ type }: { type: TestType }) {
               <div className="flex flex-wrap items-end justify-between gap-2">
                 <h2 className="text-lg font-semibold text-ink">Chi tiết theo nhóm năng lực</h2>
                 <p className="text-xs text-muted">
-                  Điểm đạt: {result.rawScore}/{result.maxScore}
+                  Số điểm đạt được: {result.rawScore}/{result.maxScore}
                 </p>
               </div>
               <div className="mt-4 space-y-4">
@@ -167,12 +167,12 @@ export function ResultView({ type }: { type: TestType }) {
                       <span className="font-medium text-ink">{d.label}</span>
                       <span className="shrink-0 text-right text-muted">
                         {d.mean != null
-                          ? `TB ${d.mean}/6`
+                          ? `Trung bình ${d.mean}/6`
                           : d.indexScore != null
-                            ? `~${d.indexScore}`
-                            : `${d.percent}%`}
+                            ? `Điểm quy đổi khoảng ${d.indexScore}`
+                            : `Mức đạt ${d.percent}%`}
                         <span className="ml-1 text-[11px] opacity-70">
-                          ({d.percent}% · {d.score}/{d.max})
+                          ({d.percent}% · {d.score}/{d.max} điểm)
                         </span>
                       </span>
                     </div>
@@ -226,8 +226,8 @@ export function ResultView({ type }: { type: TestType }) {
           <div className="glass-card p-6">
             <h3 className="font-display text-xl font-semibold text-ink">Bước tiếp theo</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Mang mã REF và tóm tắt ưu tiên vào buổi tư vấn CRT — người tư vấn đã có điểm tựa
-              để đi thẳng vào trọng tâm.
+              Gửi mã REF và phần tóm tắt khi đăng ký tư vấn CRT. Người tư vấn sẽ có
+              thông tin ban đầu để đi thẳng vào điều bạn quan tâm.
             </p>
             <ConsultCta source={`ket-qua-${type}`} className="mt-5 w-full" />
             <Link href="/ho-so" className="btn-secondary mt-3 w-full">
@@ -267,8 +267,8 @@ export function ResultView({ type }: { type: TestType }) {
               Giá trị & giới hạn
             </p>
             <p className="mt-1.5 leading-relaxed">
-              Phù hợp định hướng nghề nghiệp, lãnh đạo và năng lượng làm việc. Không thay bài
-              đo chính thức hay chẩn đoán lâm sàng.{" "}
+              Phù hợp để nhìn lại nghề nghiệp, cách lãnh đạo và năng lượng làm việc. Kết
+              quả không thay bài đánh giá chuyên sâu hoặc chẩn đoán sức khỏe tâm lý.{" "}
               <span className="inline-flex items-center gap-1">
                 <Download className="h-3 w-3" /> Nên chụp màn hình mã REF trước khi tư vấn.
               </span>
@@ -283,7 +283,7 @@ export function ResultView({ type }: { type: TestType }) {
                 onClick={() => void handleCopy(ref, "ref")}
               >
                 <Copy className="h-3.5 w-3.5" />
-                {copied === "ref" ? "Đã sao chép" : "Sao chép REF"}
+                {copied === "ref" ? "Đã sao chép" : "Sao chép mã REF"}
               </button>
               <button
                 type="button"

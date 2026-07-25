@@ -8,11 +8,11 @@ const personas = [
     ],
   },
   {
-    title: "Quản lý nhóm & founder",
+    title: "Quản lý nhóm và người sáng lập",
     points: [
-      "EQ ảnh hưởng trực tiếp đến văn hóa team",
-      "Gắn kết thấp thường đi trước nghỉ việc âm thầm",
-      "Cần tự nhìn rõ mình trước khi coach người khác",
+      "Cách xử lý cảm xúc ảnh hưởng trực tiếp đến văn hóa nhóm",
+      "Mức gắn bó thấp có thể là dấu hiệu sớm của ý định nghỉ việc",
+      "Cần hiểu rõ mình trước khi hướng dẫn và hỗ trợ người khác",
     ],
   },
   {
@@ -34,12 +34,12 @@ export function AudienceSection() {
             Dành cho ai
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-            Giai đoạn xây dựng sự nghiệp — cần gương soi, không cần quiz tuổi teen
+            Dành cho những lúc bạn cần nhìn lại công việc và chính mình
           </h2>
           <p className="mt-4 text-white/70 leading-relaxed">
-            Từ khoảng 25 tuổi trở đi, nghề nghiệp, quan hệ và năng lượng đan vào nhau.
-            CorePrint dùng ngôn ngữ trưởng thành: đo xong, mang kết quả vào buổi CRT,
-            nói chuyện có dữ liệu.
+            Từ khoảng 25 tuổi, công việc, các mối quan hệ và sức lực thường ảnh hưởng
+            lẫn nhau. CorePrint giúp bạn nhìn rõ ba mặt này và mang kết quả vào buổi
+            tư vấn CRT để trao đổi cụ thể hơn.
           </p>
         </div>
 

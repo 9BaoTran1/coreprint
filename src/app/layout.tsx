@@ -8,7 +8,7 @@ import { SITE, getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const SITE_URL = `${getSiteUrl()}/`;
-const META_TITLE = `${SITE.name} | Trắc nghiệm IQ, EQ, Engage & tư vấn CRT`;
+const META_TITLE = `${SITE.name} | Hiểu tư duy, cảm xúc và năng lượng công việc`;
 const META_DESCRIPTION = SITE.defaultDescription;
 
 const body = Be_Vietnam_Pro({
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     "trắc nghiệm IQ",
     "trắc nghiệm EQ",
     "trắc nghiệm Engage",
-    "test IQ tiếng Việt",
-    "test EQ tiếng Việt",
+    "bài IQ tiếng Việt",
+    "bài EQ tiếng Việt",
     "đánh giá gắn kết công việc",
     "tư vấn CRT",
     "tư vấn CRT Việt Nam",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         url: "og.png",
         width: 1200,
         height: 630,
-        alt: "CorePrint — Trắc nghiệm IQ, EQ, Engage và tư vấn CRT",
+        alt: "CorePrint — hiểu tư duy, cảm xúc, năng lượng công việc và tư vấn CRT",
       },
     ],
     type: "website",

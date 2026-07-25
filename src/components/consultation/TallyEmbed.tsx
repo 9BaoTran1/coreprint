@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-react";
 /**
  * Embed form CRT tư vấn (Tally). Loads Tally widget script for dynamic height.
  */
-export function TallyEmbed({ title = "Form đăng ký tư vấn CRT" }: { title?: string }) {
+export function TallyEmbed({ title = "Biểu mẫu đăng ký tư vấn CRT" }: { title?: string }) {
   useEffect(() => {
     const id = "tally-embed-script";
     if (document.getElementById(id)) {
@@ -46,14 +46,14 @@ export function TallyEmbed({ title = "Form đăng ký tư vấn CRT" }: { title?
         className="min-h-[520px] w-full rounded-xl bg-white"
       />
       <p className="mt-3 px-2 pb-1 text-center text-xs text-muted">
-        Form không tải?{" "}
+        Biểu mẫu không tải?{" "}
         <a
           href={CRT_CONSULT_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 font-medium text-ink underline-offset-2 hover:underline"
         >
-          Mở form đăng ký
+          Mở biểu mẫu đăng ký
           <ExternalLink className="h-3 w-3" />
         </a>
       </p>

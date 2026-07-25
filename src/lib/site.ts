@@ -6,7 +6,7 @@
  */
 export const SITE = {
   name: "CorePrint",
-  tagline: "Hiểu rõ ba trục: tư duy · cảm xúc · năng lượng",
+  tagline: "Hiểu rõ tư duy, cảm xúc và năng lượng trong công việc",
   /** URL đang chạy (GitHub Pages) */
   liveUrl: "https://9baotran1.github.io/coreprint",
   /** Domain production đề xuất — xem DOMAIN.md */
@@ -23,7 +23,7 @@ export const SITE = {
   phoneDisplay: null as string | null,
   locale: "vi_VN",
   defaultDescription:
-    "Đo IQ, EQ và mức gắn kết công việc bằng tiếng Việt. Nhận báo cáo rõ ràng và đặt tư vấn CRT 1:1 có dữ liệu — dành cho người 25+.",
+    "Ba bài miễn phí bằng tiếng Việt giúp người từ 25 tuổi hiểu khả năng tư duy (IQ), cách xử lý cảm xúc (EQ) và mức năng lượng trong công việc (Engage), kèm lựa chọn tư vấn CRT 1:1.",
 } as const;
 
 /** metadataBase / canonical — override bằng NEXT_PUBLIC_SITE_URL khi gắn domain */

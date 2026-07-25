@@ -6,13 +6,13 @@ const steps = [
   },
   {
     n: "02",
-    title: "Xem báo cáo & tóm tắt ưu tiên",
-    desc: "Bạn nhận mức tổng quan, chi tiết theo nhóm năng lực, gợi ý phát triển và mã REF để mang sang tư vấn.",
+    title: "Xem kết quả và việc nên ưu tiên",
+    desc: "Bạn nhận bức tranh chung, điểm theo từng nhóm khả năng, gợi ý phát triển và mã REF để dùng khi đăng ký tư vấn.",
   },
   {
     n: "03",
     title: "Đặt buổi CRT 1:1",
-    desc: "Đăng ký form tư vấn, mang theo REF và 1–2 mục tiêu. Buổi nói chuyện đi thẳng vào trọng tâm — không bắt đầu từ con số không.",
+    desc: "Điền biểu mẫu đăng ký, kèm mã REF và 1–2 mục tiêu. Nhờ đó, buổi trao đổi có thể đi thẳng vào điều bạn đang cần.",
   },
 ];
 
@@ -23,10 +23,10 @@ export function ProcessSection() {
         <div className="text-center">
           <span className="section-label">Quy trình</span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Ba bước: đo → báo cáo → tư vấn CRT
+            Ba bước: làm bài → xem kết quả → tư vấn
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted">
-            Từ lần đo đầu tiên đến buổi trao đổi có cấu trúc — rõ ràng và thực tế.
+            Một quy trình đơn giản để biến kết quả thành hành động phù hợp.
           </p>
         </div>
 

@@ -8,7 +8,7 @@ import { CRT_CONSULT_URL } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
 const links = [
-  { href: "/#tests", label: "Bài đo" },
+  { href: "/#tests", label: "Bài miễn phí" },
   { href: "/phuong-phap", label: "Phương pháp" },
   { href: "/ho-so", label: "Hồ sơ" },
   { href: "/#faq", label: "Hỏi đáp" },
@@ -46,7 +46,7 @@ export function Header() {
             <span className="block truncate font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
               {BRAND.name}
             </span>
-            <span className="hidden text-[11px] text-muted sm:block">Hồ sơ 25+ · tư vấn có dữ liệu</span>
+            <span className="hidden text-[11px] text-muted sm:block">Hiểu mình rõ hơn trong công việc</span>
           </span>
         </Link>
 
@@ -75,7 +75,7 @@ export function Header() {
             href="/#tests"
             className="btn-primary hidden !px-4 !py-2.5 text-sm md:inline-flex"
           >
-            Làm bài đo
+            Làm bài miễn phí
           </Link>
           <button
             type="button"
@@ -120,7 +120,7 @@ export function Header() {
             className="btn-primary mt-2 min-h-11"
             onClick={() => setOpen(false)}
           >
-            Làm bài đo
+            Làm bài miễn phí
           </Link>
         </div>
       </div>

@@ -131,8 +131,8 @@ function buildNarrative(
 
   if (type === "iq") {
     const frameworkNote =
-      "Bài tư duy CorePrint tham chiếu cách đọc hồ sơ nhận thức theo nhóm năng lực (ngôn ngữ, suy luận, trí nhớ làm việc). Thang điểm minh họa trung bình 100 — mang tính định hướng, không thay đánh giá lâm sàng chính thức.";
-    const protocolLabel = "34 câu · có đồng hồ 25 phút · điểm theo nhóm năng lực";
+      "Bài tư duy CorePrint xem ba nhóm khả năng: hiểu ngôn ngữ, suy luận và giữ thông tin trong đầu khi giải quyết vấn đề. Thang điểm có mức giữa là 100 và chỉ dùng để tham khảo. Kết quả không thay đánh giá chuyên sâu.";
+    const protocolLabel = "34 câu · tối đa 25 phút · kết quả theo từng nhóm";
 
     const band =
       (fsiq ?? 100) >= 120
@@ -161,25 +161,25 @@ function buildNarrative(
       displayScore: `~${fsiq}`,
       frameworkNote,
       protocolLabel,
-      summary: `Điểm tổng hợp ước lượng khoảng ${fsiq} (thang minh họa, trung bình 100). Hãy xem chi tiết từng nhóm năng lực bên dưới — hồ sơ thường không đều giữa các nhóm, và đó chính là phần hữu ích khi tư vấn.`,
+      summary: `Điểm tổng hợp ước tính khoảng ${fsiq}, trên thang tham khảo có mức giữa là 100. Hãy xem từng nhóm bên dưới để biết khả năng nào đang nổi bật và khả năng nào cần rèn thêm.`,
       insights: [
-        `Nhóm mạnh: ${strongL}${strong[0]?.indexScore != null ? ` (khoảng ${strong[0].indexScore})` : ""}.`,
-        `Nhóm cần rèn: ${weakL}${weak[0]?.indexScore != null ? ` (khoảng ${weak[0].indexScore})` : ""}.`,
+        `Nhóm đang nổi bật: ${strongL}${strong[0]?.indexScore != null ? ` (điểm quy đổi khoảng ${strong[0].indexScore})` : ""}.`,
+        `Nhóm nên rèn thêm: ${weakL}${weak[0]?.indexScore != null ? ` (điểm quy đổi khoảng ${weak[0].indexScore})` : ""}.`,
         "Nếu các nhóm lệch nhau rõ, nên trao đổi theo từng nhóm thay vì chỉ nhìn một con số tổng.",
-        "Bài web không đo đủ tốc độ xử lý như bài lâm sàng đầy đủ — không suy diễn phần đó từ kết quả này.",
+        "Bài trực tuyến này không xem xét đầy đủ tốc độ xử lý thông tin, vì vậy không nên tự kết luận về khả năng đó.",
       ],
       growthTips: [
-        "Rèn đúng nhóm thấp: đọc & so sánh khái niệm (ngôn ngữ), bài suy luận/chuỗi (suy luận), giữ số liệu ngắn trong đầu (trí nhớ làm việc).",
+        "Tập trung vào nhóm thấp nhất: đọc và so sánh khái niệm; luyện bài logic; hoặc tập giữ số liệu ngắn trong đầu khi xử lý việc.",
         "Luyện 6–8 tuần với dạng bài tương đương, rồi làm lại trong điều kiện tương tự.",
-        "Cần kết luận lâm sàng hoặc tuyển dụng chính thức: gặp chuyên gia có chứng chỉ phù hợp.",
+        "Nếu cần kết luận chuyên sâu hoặc dùng cho tuyển dụng, hãy gặp chuyên gia có đủ chuyên môn và công cụ phù hợp.",
       ],
     };
   }
 
   if (type === "eq") {
     const frameworkNote =
-      "Bài EQ CorePrint dùng tình huống thực tế, chấm theo mức độ hiệu quả của hành vi cảm xúc – xã hội. Tham chiếu mô hình năng lực cảm xúc phổ biến trong lãnh đạo và coaching — mang tính định hướng phát triển.";
-    const protocolLabel = "20 tình huống · bốn nhóm năng lực cảm xúc";
+      "Bài EQ CorePrint dùng các tình huống thực tế và chấm theo mức độ hiệu quả của cách xử lý cảm xúc, giao tiếp với người khác. Kết quả chỉ dùng để định hướng phát triển.";
+    const protocolLabel = "20 tình huống · kết quả theo bốn nhóm";
 
     const band =
       (eiq ?? 100) >= 120
@@ -204,17 +204,17 @@ function buildNarrative(
       displayScore: `~${eiq}`,
       frameworkNote,
       protocolLabel,
-      summary: `Điểm tổng quan ước lượng khoảng ${eiq} (thang minh họa, trung bình 100). Bốn nhóm: nhận biết cảm xúc, dùng cảm xúc hỗ trợ việc, hiểu cảm xúc, và điều tiết cảm xúc. Phần dưới gợi ý hướng coaching lãnh đạo.`,
+      summary: `Điểm tổng quan ước tính khoảng ${eiq}, trên thang tham khảo có mức giữa là 100. Kết quả xem bốn mặt: nhận biết cảm xúc, vận dụng cảm xúc khi làm việc, hiểu cảm xúc và điều chỉnh cảm xúc.`,
       insights: [
-        `Nhóm mạnh: ${strongL}${strong[0]?.indexScore != null ? ` (khoảng ${strong[0].indexScore})` : ""}.`,
-        `Nhóm cần phát triển: ${weakL}.`,
-        `Gợi ý năng lực lãnh đạo liên quan: ${esciHints}.`,
-        "Đây là cách chấm theo hành vi hiệu quả trong tình huống, khác với bảng tự đánh giá tính cách thuần túy.",
+        `Nhóm đang nổi bật: ${strongL}${strong[0]?.indexScore != null ? ` (điểm quy đổi khoảng ${strong[0].indexScore})` : ""}.`,
+        `Nhóm nên phát triển thêm: ${weakL}.`,
+        `Những kỹ năng làm việc liên quan: ${esciHints}.`,
+        "Điểm dựa trên mức độ hiệu quả của cách ứng xử trong tình huống, không phải bạn tự chọn mô tả tính cách.",
       ],
       growthTips: [
-        "Luyện nhóm thấp bằng nhật ký cảm xúc và diễn tập tình huống tương tự trong công việc.",
-        "Nếu bạn là quản lý: xin phản hồi 360° từ team về giao tiếp và xử lý xung đột.",
-        "Muốn đo chuẩn chính thức: trao đổi với chuyên gia tư vấn có công cụ được cấp phép.",
+        "Rèn nhóm thấp nhất bằng cách ghi lại cảm xúc và thử trước cách xử lý các tình huống tương tự trong công việc.",
+        "Nếu bạn là quản lý, hãy xin nhận xét cụ thể từ đồng nghiệp và nhân viên về cách giao tiếp, xử lý bất đồng.",
+        "Nếu cần đánh giá chuyên sâu, hãy trao đổi với chuyên gia có công cụ phù hợp và được phép sử dụng.",
       ],
     };
   }
@@ -223,8 +223,8 @@ function buildNarrative(
   const mean = overallMean ?? 0;
   const b = uwesTotalBand(mean);
   const frameworkNote =
-    "Bài Engage đo mức gắn kết – năng lượng với công việc gần đây (thang 0–6). Phân hạng tham chiếu mẫu chuẩn quốc tế — dùng để định hướng, không xếp hạng cứng nhân sự.";
-  const protocolLabel = "17 câu · thang 0–6 · ba trụ năng lượng";
+    "Bài Engage xem mức năng lượng và gắn bó với công việc gần đây, trên thang từ 0 đến 6. Các mức kết quả được so sánh với dữ liệu tham khảo quốc tế, chỉ dùng để định hướng và không dùng để xếp hạng nhân viên.";
+  const protocolLabel = "17 câu · mức từ 0 đến 6 · kết quả theo ba nhóm";
 
   return {
     band: b.key,
@@ -232,18 +232,18 @@ function buildNarrative(
     displayScore: `${mean.toFixed(2)}/6`,
     frameworkNote,
     protocolLabel,
-    summary: `Điểm trung bình tổng ${mean.toFixed(2)}/6 — mức «${b.labelVi}». Xem riêng ba trụ sức sống, gắn kết và tập trung bên dưới để biết nên điều chỉnh phần nào trước.`,
+    summary: `Điểm trung bình là ${mean.toFixed(2)}/6, tương ứng mức «${b.labelVi}». Hãy xem riêng sức lực, cảm giác công việc có ý nghĩa và khả năng tập trung để biết phần nào cần điều chỉnh trước.`,
     insights: [
-      `Trụ mạnh: ${strongL}${strong[0]?.mean != null ? ` (TB ${strong[0].mean})` : ""}.`,
-      `Trụ thấp: ${weakL}${weak[0]?.mean != null ? ` (TB ${weak[0].mean})` : ""}.`,
-      "Mức thấp trên tổng điểm có thể gợi ý đang xa rời công việc — nên xem cùng dấu hiệu mệt mỏi hoặc quá tải.",
-      "Mẫu tham chiếu mang tính quốc tế; dùng để định hướng và tư vấn, không áp cứng vào xếp hạng nội bộ.",
+      `Nhóm đang tốt nhất: ${strongL}${strong[0]?.mean != null ? ` (trung bình ${strong[0].mean}/6)` : ""}.`,
+      `Nhóm cần chú ý nhất: ${weakL}${weak[0]?.mean != null ? ` (trung bình ${weak[0].mean}/6)` : ""}.`,
+      "Điểm tổng thấp có thể cho thấy bạn đang mất kết nối với công việc. Hãy xem thêm các dấu hiệu mệt mỏi hoặc quá tải.",
+      "Dữ liệu so sánh đến từ nhiều quốc gia, nên chỉ dùng để tham khảo và trao đổi, không dùng để xếp hạng nhân viên.",
     ],
     growthTips: [
       "Sức sống thấp: ngủ đủ, giảm tải, khôi phục sau giờ làm.",
       "Gắn kết thấp: làm rõ ý nghĩa công việc, điều chỉnh nhiệm vụ cho khớp giá trị.",
-      "Tập trung thấp: khối thời gian sâu, giảm gián đoạn.",
-      "Trong 90 ngày: ưu tiên đúng trụ thấp nhất trước.",
+      "Tập trung thấp: dành riêng khoảng thời gian không bị gián đoạn cho việc quan trọng.",
+      "Trong 90 ngày, hãy ưu tiên cải thiện nhóm thấp nhất trước.",
     ],
   };
 }

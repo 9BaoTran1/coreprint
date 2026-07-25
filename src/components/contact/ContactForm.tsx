@@ -10,8 +10,8 @@ import { cn } from "@/lib/cn";
 
 const goals = [
   "Định hướng sự nghiệp / chuyển việc",
-  "Nâng EQ & leadership",
-  "Burnout / phục hồi năng lượng",
+  "Cải thiện EQ và kỹ năng lãnh đạo",
+  "Kiệt sức / phục hồi năng lượng",
   "Quan hệ & giao tiếp",
   "Xây kế hoạch 90 ngày",
   "Khác",
@@ -60,7 +60,7 @@ export function ContactForm() {
         const b = JSON.parse(briefRaw) as { refCodes?: string[]; executiveSummary?: string };
         if (b.refCodes?.length) setRefCodes(b.refCodes.join(" · "));
         if (b.executiveSummary && !draft?.note) {
-          setNote(`Brief: ${b.executiveSummary}`);
+          setNote(`Tóm tắt: ${b.executiveSummary}`);
         }
       }
     } catch {
@@ -110,11 +110,8 @@ export function ContactForm() {
         </div>
         <h2 className="mt-4 font-display text-2xl font-semibold text-ink">Đã nhận thông tin</h2>
         <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
-          Cảm ơn {name}. Team sẽ liên hệ qua <strong>{channel}</strong> trong thời gian sớm nhất.
-          Hãy giữ kết quả test trên trình duyệt hoặc chụp màn hình REF code để buổi tư vấn hiệu quả hơn.
-        </p>
-        <p className="mt-4 text-xs text-muted">
-          (Demo local — tích hợp CRM / email webhook khi deploy production.)
+          Cảm ơn {name}. Đội ngũ sẽ sớm liên hệ qua <strong>{channel}</strong>.
+          Hãy giữ kết quả trên trình duyệt hoặc chụp màn hình mã REF để dùng khi tư vấn.
         </p>
       </div>
     );
@@ -202,7 +199,7 @@ export function ContactForm() {
           </div>
         </label>
         <div className="sm:col-span-2">
-          <span className="text-sm font-medium text-ink">Bài test đã / muốn mang theo</span>
+          <span className="text-sm font-medium text-ink">Bài đã làm hoặc muốn dùng khi tư vấn</span>
           <div className="mt-2 flex flex-wrap gap-2">
             {TEST_LIST.map((t) => {
               const on = tests.includes(t.type);
@@ -240,7 +237,8 @@ export function ContactForm() {
         Gửi yêu cầu tư vấn
       </button>
       <p className="mt-3 text-xs text-muted">
-        Thông tin chỉ dùng để liên hệ tư vấn. Không spam, không chia sẻ bên thứ ba.
+        Thông tin chỉ dùng để liên hệ tư vấn, không gửi tin ngoài mục đích này hoặc
+        chia sẻ cho bên thứ ba.
       </p>
     </form>
   );

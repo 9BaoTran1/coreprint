@@ -9,7 +9,7 @@ export default function NotFound() {
         Không tìm thấy trang
       </h1>
       <p className="mt-3 text-muted leading-relaxed">
-        Link có thể sai hoặc trang đã đổi. Quay về trang chủ hoặc chọn bài assessment.
+        Liên kết có thể sai hoặc trang đã đổi. Bạn có thể về trang chủ hoặc chọn một bài khác.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link href="/" className="btn-primary">

@@ -12,6 +12,12 @@ const sevStyle = {
   low: "bg-teal-soft text-teal border-teal/20",
 };
 
+const sevLabel = {
+  high: "Cần ưu tiên",
+  medium: "Nên lưu ý",
+  low: "Có thể cải thiện",
+};
+
 export function BriefPanel({
   brief,
   compact = false,
@@ -23,7 +29,7 @@ export function BriefPanel({
     <div className="glass-card overflow-hidden">
       <div className="border-b border-line bg-ink px-6 py-5 text-white md:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/50">
-          Tóm tắt tư vấn · dùng trong buổi 1:1
+          Tóm tắt để dùng khi tư vấn 1:1
         </p>
         <h2 className="mt-2 font-display text-2xl font-semibold">
           Ưu tiên cần trao đổi
@@ -33,7 +39,7 @@ export function BriefPanel({
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-white/60">
           <span className="rounded-full bg-white/10 px-2 py-0.5">
-            {brief.completeness === "full" ? "Đủ 3 trục" : "Hồ sơ một phần"}
+            {brief.completeness === "full" ? "Đã làm đủ 3 bài" : "Chưa làm đủ 3 bài"}
           </span>
           {brief.refCodes.map((c) => (
             <span key={c} className="rounded-full bg-white/10 px-2 py-0.5 font-mono">
@@ -49,7 +55,7 @@ export function BriefPanel({
             <div>
               <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">
                 <CheckCircle2 className="h-4 w-4 text-teal" />
-                Điểm tựa
+                Điểm mạnh có thể phát huy
               </h3>
               <ul className="mt-2 space-y-1.5">
                 {brief.strengths.length ? (
@@ -59,14 +65,14 @@ export function BriefPanel({
                     </li>
                   ))
                 ) : (
-                  <li className="text-sm text-muted">Làm thêm bài để thấy điểm tựa.</li>
+                  <li className="text-sm text-muted">Làm thêm bài để thấy rõ điểm mạnh.</li>
                 )}
               </ul>
             </div>
             <div>
               <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">
                 <AlertTriangle className="h-4 w-4 text-accent" />
-                Rủi ro cần nói trong buổi
+                Điều cần lưu ý
               </h3>
               <ul className="mt-2 space-y-1.5">
                 {brief.risks.length ? (
@@ -76,7 +82,7 @@ export function BriefPanel({
                     </li>
                   ))
                 ) : (
-                  <li className="text-sm text-muted">Chưa có red flag nổi từ dữ liệu hiện có.</li>
+                  <li className="text-sm text-muted">Chưa thấy điểm nào cần ưu tiên xử lý từ kết quả hiện có.</li>
                 )}
               </ul>
             </div>
@@ -86,12 +92,13 @@ export function BriefPanel({
         <div>
           <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">
             <ClipboardList className="h-4 w-4" />
-            Ưu tiên can thiệp (severity)
+            Việc nên ưu tiên
           </h3>
           <div className="mt-3 space-y-3">
             {brief.priorities.length === 0 && (
               <p className="text-sm text-muted">
-                Profile ổn định — buổi tư vấn có thể tập trung tinh chỉnh mục tiêu 6–12 tháng.
+                Kết quả hiện khá ổn định. Buổi tư vấn có thể tập trung làm rõ mục tiêu
+                trong 6–12 tháng tới.
               </p>
             )}
             {brief.priorities.map((p, i) => (
@@ -104,13 +111,13 @@ export function BriefPanel({
                       sevStyle[p.severity],
                     )}
                   >
-                    {p.severity}
+                    {sevLabel[p.severity]}
                   </span>
                   <h4 className="font-semibold text-ink">{p.title}</h4>
                 </div>
                 {!compact && (
                   <>
-                    <p className="mt-2 text-xs font-medium text-muted">Bằng chứng từ bài đo</p>
+                    <p className="mt-2 text-xs font-medium text-muted">Thông tin liên quan từ kết quả</p>
                     <ul className="mt-1 space-y-0.5">
                       {p.evidence.map((e) => (
                         <li key={e} className="text-xs text-muted">
@@ -120,7 +127,7 @@ export function BriefPanel({
                     </ul>
                     <div className="mt-3 grid gap-3 md:grid-cols-2">
                       <div>
-                        <p className="text-xs font-semibold text-ink">Câu hỏi coach</p>
+                        <p className="text-xs font-semibold text-ink">Câu hỏi để trao đổi</p>
                         <ul className="mt-1 space-y-1">
                           {p.coachQuestions.map((q) => (
                             <li key={q} className="text-xs leading-relaxed text-muted">
@@ -151,7 +158,7 @@ export function BriefPanel({
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-dashed border-line p-4">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                Agenda gợi ý 45’
+                Gợi ý cho buổi 45 phút
               </p>
               <ol className="mt-2 list-decimal space-y-1 pl-4 text-xs text-muted">
                 {brief.sessionAgenda.map((s) => (
@@ -161,7 +168,7 @@ export function BriefPanel({
             </div>
             <div className="rounded-2xl border border-dashed border-line p-4">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                Client chuẩn bị
+                Bạn nên chuẩn bị
               </p>
               <ul className="mt-2 space-y-1 text-xs text-muted">
                 {brief.clientPrep.map((s) => (
@@ -174,9 +181,9 @@ export function BriefPanel({
         )}
 
         <div className="rounded-2xl border border-teal/20 bg-teal-soft/30 px-4 py-3 text-xs leading-relaxed text-muted">
-          <p className="font-semibold text-ink">Mang theo khi đăng ký / vào buổi 1:1</p>
+          <p className="font-semibold text-ink">Chuẩn bị khi đăng ký hoặc tham gia buổi 1:1</p>
           <ul className="mt-1.5 space-y-1">
-            <li>· Mã REF (sao chép từ trang kết quả) — dán vào ghi chú form đăng ký</li>
+            <li>· Mã REF từ trang kết quả — dán vào phần ghi chú của biểu mẫu đăng ký</li>
             <li>· 1–2 ưu tiên trong tóm tắt bên trên</li>
             <li>· Bối cảnh: việc làm, quan hệ hoặc năng lượng bạn muốn cải thiện trong 90 ngày</li>
           </ul>

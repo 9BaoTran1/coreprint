@@ -58,7 +58,7 @@ export function buildConsultBrief(
     const weak = dimWeak(iq, 55);
     strong.slice(0, 2).forEach((d) => {
       strengths.push(
-        `Tư duy · ${d.label}${d.indexScore != null ? ` (index ~${d.indexScore})` : ` (${d.percent}%)`}`,
+        `Tư duy · ${d.label}${d.indexScore != null ? ` (điểm quy đổi khoảng ${d.indexScore})` : ` (${d.percent}%)`}`,
       );
     });
     if (weak.length) {
@@ -71,20 +71,20 @@ export function buildConsultBrief(
             `${d.label}: ${d.percent}%${d.indexScore != null ? ` · khoảng ${d.indexScore}` : ""}`,
         ),
         coachQuestions: [
-          "Công việc hiện tại đòi hỏi nhiều nhất nhóm nào: ngôn ngữ, suy luận hay trí nhớ thao tác?",
-          "Khi ra quyết định lớn, bạn thường thiếu dữ liệu, thiếu khung suy nghĩ, hay thiếu thời gian suy?",
+          "Công việc hiện tại cần nhiều nhất khả năng nào: hiểu ngôn ngữ, suy luận hay giữ và xử lý thông tin trong đầu?",
+          "Khi ra quyết định lớn, bạn thường thiếu thông tin, thiếu cách phân tích hay thiếu thời gian suy nghĩ?",
           "Có phần việc nào bạn hay né vì ‘nặng đầu’?",
         ],
         actions90d: [
-          "Chọn 1 nhóm thấp nhất → luyện 3 lần/tuần × 20 phút (dạng tương đương, không học thuộc đề).",
-          "Mỗi tuần ghi 1 quyết định: giả định → lựa chọn → kết quả.",
-          "Gắn kỹ năng đang học với nhóm tư duy cần mài.",
+          "Chọn nhóm thấp nhất và luyện 20 phút, 3 lần mỗi tuần bằng dạng bài tương tự; không học thuộc câu hỏi.",
+          "Mỗi tuần ghi lại một quyết định: điều bạn cho là đúng, lựa chọn đã đưa ra và kết quả.",
+          "Chọn kỹ năng cần học dựa trên nhóm tư duy bạn muốn cải thiện.",
         ],
       });
     }
     if (iq.band === "below" || iq.band === "low_avg" || iq.percent < 40) {
       risks.push(
-        "Nền tư duy trên bài đo còn thấp — tránh quyết định nghề lớn chỉ theo cảm tính; cần lộ trình kỹ năng rõ.",
+        "Kết quả tư duy hiện còn thấp. Trước quyết định nghề nghiệp lớn, nên thu thập thêm thông tin và lập kế hoạch học kỹ năng rõ ràng.",
       );
     }
   }
@@ -106,19 +106,19 @@ export function buildConsultBrief(
         evidence: weak.map((d) => `${d.label}: ${d.percent}%`),
         coachQuestions: [
           "Kể một xung đột trong 90 ngày gần đây: bạn phản ứng thế nào ở phút đầu?",
-          "Ai trong công việc sẽ xác nhận điểm mù này nếu được hỏi khéo?",
+          "Ai trong công việc có thể cho bạn nhận xét trung thực về điểm bạn chưa tự nhận ra?",
           "Tình huống nào bạn hay chọn ‘thắng’ thay vì ‘hiểu’?",
         ],
         actions90d: [
-          "Mỗi tuần 1 kịch bản nhỏ cho nhóm yếu (dừng email nóng / lắng nghe / làm rõ lợi ích chung).",
-          "Mỗi tháng xin 1 lần phản hồi: 1 hành vi nên giữ, 1 hành vi nên đổi.",
-          "Diễn tập 15 phút trong buổi tư vấn lần 2.",
+          "Mỗi tuần luyện một tình huống nhỏ cho nhóm cần cải thiện, như hoãn gửi email khi nóng giận, lắng nghe hoặc làm rõ lợi ích chung.",
+          "Mỗi tháng xin nhận xét về một cách ứng xử nên giữ và một cách nên đổi.",
+          "Dành 15 phút thực hành tình huống trong buổi tư vấn thứ hai.",
         ],
       });
     }
     if (eq.percent < 50) {
       risks.push(
-        "EQ trên tình huống còn thấp — dễ ảnh hưởng lãnh đạo, phản hồi và đàm phán nếu bạn đang (hoặc sắp) lead.",
+        "Kết quả xử lý tình huống cảm xúc còn thấp. Điều này có thể ảnh hưởng đến giao tiếp, góp ý, đàm phán và dẫn dắt nhóm.",
       );
     }
   }
@@ -128,7 +128,7 @@ export function buildConsultBrief(
 
     dimStrong(eng, 70).forEach((d) => {
       if (d.mean != null && d.mean >= 4)
-        strengths.push(`Năng lượng · ${d.label} (TB ${d.mean})`);
+        strengths.push(`Năng lượng · ${d.label} (trung bình ${d.mean}/6)`);
     });
 
     const engWeak = [...eng.dimensions].sort(
@@ -138,21 +138,21 @@ export function buildConsultBrief(
     if (eng.band === "very_low" || eng.band === "low" || (lowest && (lowest.mean ?? 0) < 3)) {
       priorities.push({
         id: "engage-low",
-        title: "Gắn kết / năng lượng thấp — cần chú ý sớm",
+        title: "Năng lượng hoặc mức gắn bó với công việc thấp",
         severity:
           eng.band === "very_low" || eng.band === "low" ? "high" : "medium",
         evidence: eng.dimensions.map(
-          (d) => `${d.label}: TB ${d.mean ?? "—"} (${d.percent}%)`,
+          (d) => `${d.label}: trung bình ${d.mean ?? "—"}/6 (${d.percent}%)`,
         ),
         coachQuestions: [
           "Giấc ngủ và sức khỏe thể chất 4 tuần gần đây thế nào?",
-          "Vấn đề chủ yếu là khối lượng việc, lệch giá trị, hay quan hệ sếp/team?",
+          "Vấn đề chính nằm ở khối lượng công việc, công việc không hợp điều bạn coi trọng, hay quan hệ với quản lý và đồng nghiệp?",
           "Nếu giữ nguyên 6 tháng nữa, điều gì có thể hỏng trước?",
         ],
         actions90d: [
           "Tuần 1–2: ưu tiên phục hồi (ngủ, ranh giới công việc).",
-          "Nếu gắn kết thấp: điều chỉnh 20% nhiệm vụ theo điểm mạnh và ý nghĩa.",
-          "Nếu tập trung thấp: chặn khung giờ làm sâu; nếu nhiều trụ thấp cùng lúc — rà lại sự phù hợp vai trò.",
+          "Nếu thấy công việc thiếu ý nghĩa, thử điều chỉnh khoảng 20% nhiệm vụ để phù hợp hơn với điểm mạnh và điều bạn coi trọng.",
+          "Nếu khó tập trung, dành riêng khung giờ không bị gián đoạn. Nếu nhiều nhóm cùng thấp, hãy xem lại vai trò hiện tại có còn phù hợp không.",
         ],
       });
       risks.push(
@@ -160,15 +160,15 @@ export function buildConsultBrief(
       );
     } else if (eng.band === "high" || eng.band === "very_high") {
       strengths.push(
-        `Gắn kết cao (${eng.displayScore}) — cần giữ ranh giới để tránh làm quá sức dưới danh nghĩa đam mê`,
+        `Mức gắn bó với công việc cao (${eng.displayScore}). Cần giữ ranh giới để tránh làm quá sức vì đam mê.`,
       );
       if (lowest && (lowest.mean ?? 6) < 3.5) {
         priorities.push({
           id: "engage-imbalance",
-          title: "Tổng gắn kết ổn nhưng lệch giữa các trụ",
+          title: "Kết quả chung ổn nhưng các nhóm chưa cân bằng",
           severity: "low",
-          evidence: [`Trụ thấp hơn: ${lowest.label} TB ${lowest.mean}`],
-          coachQuestions: ["Trụ thấp có đang được bù bằng làm thêm giờ không?"],
+          evidence: [`Nhóm thấp hơn: ${lowest.label}, trung bình ${lowest.mean}/6`],
+          coachQuestions: ["Bạn có đang làm thêm giờ để bù cho nhóm thấp này không?"],
           actions90d: ["Cân bằng phục hồi với thời gian làm sâu."],
         });
       }
@@ -178,39 +178,39 @@ export function buildConsultBrief(
   if (iq && eq && iq.percent >= 65 && eq.percent < 50) {
     priorities.unshift({
       id: "iq-eq-gap",
-      title: "Tư duy mạnh – ứng xử cảm xúc còn yếu (hay gặp ở 25+)",
+      title: "Tư duy tốt nhưng cách xử lý cảm xúc còn cần cải thiện",
       severity: "high",
       evidence: [
         `Tư duy: ${iq.bandLabel}`,
         `Cảm xúc: ${eq.bandLabel}`,
       ],
       coachQuestions: [
-        "Bạn có từng ‘đúng về logic’ nhưng mất đồng thuận team không?",
-        "Phản hồi gần đây từ sếp/đồng nghiệp nói gì về cách giao tiếp?",
+        "Bạn có từng đúng về lý lẽ nhưng vẫn không nhận được sự đồng thuận của cả nhóm không?",
+        "Quản lý hoặc đồng nghiệp gần đây nhận xét gì về cách bạn giao tiếp?",
       ],
       actions90d: [
-        "Ưu tiên luyện EQ trước khi thêm kỹ năng kỹ thuật mới.",
+        "Ưu tiên rèn cách xử lý cảm xúc và quan hệ trước khi học thêm kỹ năng chuyên môn mới.",
         "Mỗi quyết định quan trọng: hỏi ‘ai bị ảnh hưởng và họ có thể cảm thấy gì?’",
       ],
     });
     risks.push(
-      "Dễ bị nhìn là ‘giỏi nhưng khó theo’ — cản lãnh đạo dù tư duy tốt.",
+      "Bạn có thể bị nhìn nhận là giỏi nhưng khó hợp tác, từ đó hạn chế khả năng dẫn dắt dù tư duy tốt.",
     );
   }
 
   if (eng && eq && (eng.band === "low" || eng.band === "very_low") && eq.percent < 55) {
     priorities.unshift({
       id: "burnout-eq",
-      title: "Mất gắn kết + EQ thấp khi chịu áp lực",
+      title: "Mất động lực và khó xử lý cảm xúc khi chịu áp lực",
       severity: "high",
       evidence: [eng.bandLabel, eq.bandLabel],
       coachQuestions: [
-        "Bạn có đang thu mình cảm xúc hoặc ‘tắt’ với đồng nghiệp không?",
-        "Hỗ trợ xã hội hiện tại (bạn bè / gia đình / mentor) có đủ không?",
+        "Bạn có đang thu mình hoặc ít kết nối với đồng nghiệp không?",
+        "Bạn có đang nhận đủ sự hỗ trợ từ bạn bè, gia đình hoặc người hướng dẫn không?",
       ],
       actions90d: [
         "Ưu tiên an toàn và phục hồi trước khi ép chỉ tiêu.",
-        "Chọn 1 người tin cậy để check-in mỗi tuần.",
+        "Chọn một người tin cậy để trò chuyện và cập nhật tình hình mỗi tuần.",
       ],
     });
   }
@@ -224,31 +224,31 @@ export function buildConsultBrief(
 
   const executiveSummary =
     completeness === "full"
-      ? `Hồ sơ đủ 3 trục (${names}). Ưu tiên tư vấn: ${top[0]?.title ?? "duy trì và tinh chỉnh"}. Buổi 1: xác nhận bối cảnh và chọn 1–2 đòn bẩy trong 90 ngày — không dàn trải.`
-      : `Hồ sơ một phần (${names || "chưa có"}). Vẫn tư vấn được theo trục đã có; nên bổ sung ${(["iq", "eq", "engage"] as TestType[])
+      ? `Bạn đã làm đủ 3 bài (${names}). Nội dung nên ưu tiên khi tư vấn: ${top[0]?.title ?? "duy trì những điểm đang tốt và làm rõ mục tiêu"}. Buổi đầu sẽ làm rõ hoàn cảnh và chọn 1–2 việc quan trọng trong 90 ngày.`
+      : `Bạn đã có kết quả của ${names || "chưa có bài nào"}. Vẫn có thể tư vấn dựa trên kết quả hiện có; nên làm thêm ${(["iq", "eq", "engage"] as TestType[])
           .filter((t) => !types.includes(t))
           .map((t) => TESTS[t].shortName)
           .join(", ")} để quyết định cân bằng hơn.`;
 
   const sessionAgenda = [
-    "0–5 phút: Mục tiêu buổi và giới hạn (không chẩn đoán lâm sàng).",
-    "5–15 phút: Duyệt tóm tắt — bạn xác nhận hoặc phản biện dữ liệu.",
+    "0–5 phút: Thống nhất mục tiêu và giới hạn của buổi tư vấn; không chẩn đoán sức khỏe tâm lý.",
+    "5–15 phút: Xem phần tóm tắt và đối chiếu với trải nghiệm thực tế của bạn.",
     "15–30 phút: Đào sâu 1–2 ưu tiên quan trọng nhất.",
     "30–40 phút: Chọn 2–3 hành động 90 ngày và cách theo dõi.",
-    "40–45 phút: Lịch follow-up và kênh hỗ trợ.",
+    "40–45 phút: Thống nhất thời điểm xem lại tiến độ và cách giữ liên lạc.",
   ];
 
   const highCount = top.filter((p) => p.severity === "high").length;
   const suggestedPackage =
     highCount >= 2 || completeness === "full"
-      ? "Gợi ý: gói 3 buổi (0–30–60 ngày) — làm rõ → thực hành → rà soát"
-      : "Gợi ý: buổi đơn 45 phút + follow-up 30 phút sau 3–4 tuần (tuỳ chọn)";
+      ? "Gợi ý: ba buổi — bắt đầu, sau 30 ngày và sau 60 ngày — để làm rõ, thực hành và xem lại tiến độ"
+      : "Gợi ý: một buổi 45 phút và có thể thêm buổi 30 phút để xem lại tiến độ sau 3–4 tuần";
 
   const suggestedGoal =
     top[0]?.id === "engage-low" || top[0]?.id === "burnout-eq"
-      ? "Burnout / phục hồi năng lượng"
+      ? "Kiệt sức / phục hồi năng lượng"
       : top[0]?.id === "eq-branch" || top[0]?.id === "iq-eq-gap"
-        ? "Nâng EQ & leadership"
+        ? "Cải thiện EQ và kỹ năng lãnh đạo"
         : top[0]?.id === "iq-index-gap"
           ? "Định hướng sự nghiệp / chuyển việc"
           : "Xây kế hoạch 90 ngày";
@@ -264,12 +264,12 @@ export function buildConsultBrief(
     sessionAgenda,
     suggestedPackage,
     clientPrep: [
-      "Mang REF code / chụp màn hình kết quả từng bài.",
-      "Viết 5 dòng: bối cảnh công việc, 1 quyết định đang treo, 1 mối quan hệ căng.",
-      "Ngủ đủ trước buổi — dữ liệu cảm xúc trung thực hơn.",
+      "Mang mã REF hoặc ảnh chụp kết quả từng bài.",
+      "Viết ngắn về công việc hiện tại, một quyết định chưa đưa ra và một mối quan hệ đang căng thẳng.",
+      "Ngủ đủ trước buổi để bạn tỉnh táo và nhìn nhận cảm xúc rõ hơn.",
       completeness === "partial"
         ? "Nếu kịp: hoàn thành nốt các bài còn lại trước buổi tư vấn."
-        : "Review 1 priority bạn đồng ý nhất và 1 điểm bạn phản đối trong brief.",
+        : "Chọn một ưu tiên bạn đồng ý nhất và một điểm trong phần tóm tắt mà bạn thấy chưa đúng.",
     ],
     refCodes,
     suggestedGoal,

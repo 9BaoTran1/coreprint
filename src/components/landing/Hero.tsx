@@ -9,18 +9,19 @@ export function Hero() {
         <div className="animate-fade-up">
           <span className="section-label">
             <Sparkles className="h-3.5 w-3.5 text-accent" />
-            Dành cho người 25+ — đo có cấu trúc, dùng được cho tư vấn
+            Ba bài miễn phí cho người từ 25 tuổi
           </span>
           <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] tracking-tight text-ink md:text-5xl lg:text-[3.4rem]">
-            Hiểu rõ mình hơn.{" "}
-            <span className="text-accent">Tư vấn CRT có dữ liệu.</span>
+            Hiểu mình rõ hơn.{" "}
+            <span className="text-accent">Chọn hướng đi phù hợp hơn.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-            Ba bài miễn phí: <strong className="text-ink">tư duy (IQ)</strong>,{" "}
-            <strong className="text-ink">cảm xúc (EQ)</strong> và{" "}
-            <strong className="text-ink">năng lượng công việc (Engage)</strong>.
-            Làm xong bạn nhận báo cáo và tóm tắt ưu tiên — sẵn sàng mang vào buổi
-            tư vấn CRT 1:1.
+            Làm ba bài miễn phí để hiểu khả năng{" "}
+            <strong className="text-ink">tư duy (IQ)</strong>, cách{" "}
+            <strong className="text-ink">nhận biết và xử lý cảm xúc (EQ)</strong>, cùng{" "}
+            <strong className="text-ink">mức năng lượng và gắn bó với công việc (Engage)</strong>.
+            Bạn nhận kết quả rõ ràng và các việc nên ưu tiên. Nếu cần, tư vấn CRT 1:1
+            sẽ giúp bạn cùng đọc kết quả và chọn kế hoạch 90 ngày.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -57,7 +58,7 @@ export function Hero() {
             <div className="absolute -bottom-10 -left-6 h-36 w-36 rounded-full bg-teal/10 blur-2xl" />
 
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-              Minh họa hồ sơ ba trục
+              Ví dụ kết quả tổng hợp
             </p>
             <div className="mt-5 space-y-3">
               {[
@@ -97,7 +98,7 @@ export function Hero() {
           <div className="absolute -bottom-4 left-6 right-6 flex items-center gap-2 rounded-2xl border border-line bg-white px-4 py-3 shadow-lg md:left-10 md:right-10">
             <Users className="h-4 w-4 shrink-0 text-accent" />
             <p className="text-xs text-muted md:text-sm">
-              Dành cho người đi làm, quản lý và founder — ngôn ngữ rõ, insight thực dụng.
+              Dành cho người đi làm, quản lý và người sáng lập — rõ ràng, thiết thực.
             </p>
           </div>
         </div>

@@ -10,11 +10,11 @@ export function TestCards() {
         <div className="max-w-2xl">
           <span className="section-label">Ba bài đo miễn phí</span>
           <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            IQ · EQ · Engage — đủ để mở buổi tư vấn CRT
+            Ba góc nhìn để hiểu mình trong công việc
           </h2>
           <p className="mt-3 text-muted leading-relaxed">
-            Nên làm ở nơi yên tĩnh, trung thực. Làm đủ ba bài sẽ có tóm tắt tư vấn đầy đủ
-            hơn; làm một bài vẫn hữu ích theo trục đó.
+            Hãy làm ở nơi yên tĩnh và trả lời trung thực. Làm đủ ba bài giúp phần tổng
+            hợp đầy đủ hơn; làm một bài vẫn cho bạn thông tin hữu ích về mặt đó.
           </p>
         </div>
 

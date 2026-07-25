@@ -1,23 +1,23 @@
 const faqs = [
   {
     q: "Các bài đo có miễn phí không?",
-    a: "Có. Ba bài IQ, EQ và Engage đều miễn phí trên web. Bạn chỉ đăng ký form khi muốn đặt buổi tư vấn CRT 1:1.",
+    a: "Có. Cả ba bài về tư duy (IQ), cảm xúc (EQ) và năng lượng công việc (Engage) đều miễn phí. Bạn chỉ cần điền biểu mẫu khi muốn đăng ký tư vấn CRT 1:1.",
   },
   {
     q: "Kết quả có phải bài đo chính thức không?",
-    a: "Không. CorePrint tham chiếu khung đo quốc tế và soạn câu hỏi riêng để định hướng phát triển. Không thay bài đo lâm sàng hay bài có bản quyền do chuyên gia có chứng chỉ thực hiện.",
+    a: "Không. CorePrint dựa trên những cách đo được dùng rộng rãi và tự soạn câu hỏi để hỗ trợ phát triển. Kết quả không thay thế bài đánh giá chuyên sâu hoặc bài có bản quyền do chuyên gia đủ điều kiện thực hiện.",
   },
   {
-    q: "Mã REF là gì? Dùng để làm gì?",
-    a: "REF là mã tóm tắt trên trang kết quả (ví dụ IQ-72-high). Bạn sao chép mã này dán vào form đặt tư vấn CRT, hoặc đưa cho coach trong buổi 1:1 để họ nắm nhanh hồ sơ.",
+    q: "Mã REF dùng để làm gì?",
+    a: "REF là mã tham chiếu có trên trang kết quả. Bạn chỉ cần sao chép mã này vào biểu mẫu đăng ký hoặc gửi cho người tư vấn để họ tìm đúng phần kết quả cần trao đổi. Bạn không cần tự giải nghĩa mã.",
   },
   {
     q: "Tôi có cần làm đủ ba bài không?",
-    a: "Nên làm đủ IQ · EQ · Engage để tóm tắt tư vấn đầy đủ hơn. Chỉ làm một bài vẫn hữu ích cho trục đó.",
+    a: "Nên làm đủ ba bài để phần tổng hợp đầy đủ hơn. Nếu chỉ làm một bài, bạn vẫn nhận được thông tin hữu ích về mặt đó.",
   },
   {
     q: "Thông tin của tôi có bị chia sẻ không?",
-    a: "Kết quả bài đo lưu trên trình duyệt của bạn. Form đặt tư vấn chỉ dùng để liên hệ — không bán danh sách liên hệ.",
+    a: "Kết quả được lưu trên trình duyệt của bạn. Thông tin trong biểu mẫu đăng ký chỉ được dùng để liên hệ tư vấn, không dùng để bán danh sách liên hệ.",
   },
   {
     q: "Mỗi bài mất bao lâu?",
